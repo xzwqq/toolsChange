@@ -4,7 +4,8 @@ import Auth from "../pages/Auth/Auth.tsx";
 import "./style/App.css";
 
 function App() {
-  return (
+
+    return (
     <>
       <HistoryRouter history={history}>
         <Routes>
