@@ -1,7 +1,7 @@
 
 const Auth = () => {
   return (
-    <div>Auths</div>
+    <div>Authss</div>
   )
 }
 
