@@ -1,13 +1,18 @@
 import {RouterProvider} from '@tanstack/react-router'
-import {TanStackRouterDevtools} from '@tanstack/react-router-devtools'
 import { router } from './provider/history';
+
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 
 function App() {
+  
   return (
     <>
       <RouterProvider router={router} />
-      <TanStackRouterDevtools router={router} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { Link , Outlet } from "@tanstack/react-router"
+import {TanStackRouterDevtools} from '@tanstack/react-router-devtools'
 const Header = () => {
   return (
     <div>
@@ -7,6 +8,7 @@ const Header = () => {
             <Link to='/auth'>Log</Link>
         </nav>
         <Outlet/>
+        <TanStackRouterDevtools />
     </div>
   )
 }
