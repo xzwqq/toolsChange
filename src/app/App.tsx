@@ -1,20 +1,13 @@
-import {
-  unstable_HistoryRouter as HistoryRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Auth from "../pages/Auth/Auth.tsx";
-import {history} from './provider/history.ts'
-import "./style/App.css";
+import {RouterProvider} from '@tanstack/react-router'
+import {TanStackRouterDevtools} from '@tanstack/react-router-devtools'
+import { router } from './provider/history';
+
 
 function App() {
   return (
     <>
-      <HistoryRouter history={history}>
-        <Routes>
-          <Route path="/" element={<Auth />} />
-        </Routes>
-      </HistoryRouter>
+      <RouterProvider router={router} />
+      <TanStackRouterDevtools router={router} />
     </>
   );
 }
