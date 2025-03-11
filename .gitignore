@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Игнорировать папку node_modules
+node_modules/
+
+# Игнорировать файл .env
+.env
