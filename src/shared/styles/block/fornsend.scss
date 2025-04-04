@@ -1,0 +1,78 @@
+@use '../helpers/function.scss' as *;
+
+.root-formsend {
+	width: rem(1120);
+	height: rem(734);
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: rem(20);
+}
+
+.formSend {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.inputsend {
+	display: flex;
+	flex-direction: column;
+}
+.selectsend {
+	border-radius: 10px;
+	background: #6d6d6d;
+	width: rem(480);
+	height: rem(40);
+	border-color: transparent;
+	color: white;
+	margin-top: rem(60);
+}
+.but-send {
+	border-radius: 10px;
+	background: #ffbf00;
+	width: rem(110);
+	height: rem(40);
+	border-color: transparent;
+	margin-top: rem(20);
+}
+.option-send {
+	color: #ffbf00;
+}
+.file-upload {
+	width: rem(500);
+	height: rem(650);
+	border-radius: rem(30);
+	background-color: rgba(184, 184, 182, 1);
+	margin-top: rem(20);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.send-photo {
+	width: rem(139);
+	height: rem(105);
+	margin-bottom: rem(50);
+}
+.file-input {
+	display: none;
+}
+.file-input-label {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.btn-photo {
+	color: #fff;
+	font-family: 'Unbounded';
+	font-size: 24px;
+	font-weight: 400;
+	line-height: normal;
+}
+.selectsend::placeholder {
+	color: #fff;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
