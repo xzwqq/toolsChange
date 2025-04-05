@@ -1,16 +1,15 @@
 export interface Pidorok {
-    type: string;
-    condition: string;
-    price: string;
-    categoryId: object;
-    manufacturerId: object;
-    description: string;
-    photos?: string[];  // ДОБАВЛЕНО
+	type: string;
+	condition: string;
+	price: string;
+	categoryId: string ;
+	manufacturerId: string ;
+	description: string;
+	photos?: string[];
 }
-  
 
 export interface PidorokSend {
-        tool: object,
-        files: [],
-        id: number,
+	tool: Pidorok;
+	files: File[] | null;
+	id: string;
 }

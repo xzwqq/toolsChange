@@ -1,4 +1,5 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
+import { Data } from '../type/toolsend.type';
 
 const toolsSendSlice = createSlice({
 	name: 'toolsSend',
@@ -26,7 +27,7 @@ const toolsSendSlice = createSlice({
 });
 export const ToolsSendActions = {
 	...toolsSendSlice.actions,
-	submit: createAction(`${toolsSendSlice.name}/submit`),
+	submit: createAction<{data: Data}>(`${toolsSendSlice.name}/submit`),
 	submitSelectC: createAction(`${toolsSendSlice.name}/submitSelectC`),
 	submitSelectM: createAction(`${toolsSendSlice.name}/submitSelectM`),
 };

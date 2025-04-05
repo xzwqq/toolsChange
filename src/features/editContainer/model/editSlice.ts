@@ -1,5 +1,5 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
-import { Pidorok } from "../type/editType";
+import { Pidorok, PidorokSend } from "../type/editType";
 
 
 interface editState {
@@ -27,24 +27,17 @@ const editSlice = createSlice({
         }
     }
 })
+const submitMyContainer = createAction(
+    `${editSlice.name}/submitMyContainer`,
+    (data: PidorokSend) => ({ payload: data })
+);
 
 export const EditActions = {
     ...editSlice.actions,
-    submitMyContainer: createAction<{ 
-      data: { 
-        type: string; 
-        condition: string; 
-        price: string; 
-        categoryId: string; 
-        manufacturerId: string; 
-        description: string; 
-      }; 
-      files: File[]; 
-      id: string; 
-      filesToDelete?: string[];
-    }>(`${editSlice.name}/submitMyContainer`),
+    submitMyContainer,
     submitGetContainer: createAction<string>(`${editSlice.name}/submitGetContainer`),
 };
+ 
 
 
 export default editSlice.reducer

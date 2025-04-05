@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { EditActions } from "../model/editSlice.js";
 import { ToolsSendActions } from '../../formToolsSend/model/toolsSendSlice.ts';
 import { RootState } from "../../../app/store/store.ts";
+import { PidorokSend } from "../type/editType.ts";
 
 const EditContainer = () => {
   const dispatch = useDispatch();
@@ -22,8 +23,8 @@ const EditContainer = () => {
     type: '',
     condition: '',
     price: '',
-    categoryId: {},
-    manufacturerId: {},
+    categoryId: '',
+    manufacturerId: '',
     description: '',
   });
 
@@ -33,8 +34,8 @@ const EditContainer = () => {
         type: container.type || '',
         condition: container.condition || '',
         price: container.price || '',
-        categoryId: container.categoryId || {},  // ИСПРАВЛЕНО
-        manufacturerId: container.manufacturerId || {},
+        categoryId: container.categoryId || '',  
+        manufacturerId: container.manufacturerId || '',
         description: container.description || '',
       });
     }
@@ -43,12 +44,12 @@ const EditContainer = () => {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     if (!id) return;
-    const data = {
+    const data: PidorokSend = {
       tool: formData,
       files,
       id,
     };
-    dispatch(EditActions.submitMyContainer({ data }));  // ИСПРАВЛЕНО
+    dispatch(EditActions.submitMyContainer(data));  // ИСПРАВЛЕНО
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,11 +65,12 @@ const EditContainer = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(EditActions.submitGetContainer(id));
+        dispatch(EditActions.submitGetContainer(id));
     }
-    ToolsSendActions.submitSelectC();  // УБРАН DISPATCH
-    ToolsSendActions.submitSelectM();  // УБРАН DISPATCH
-  }, [id]);
+    dispatch(ToolsSendActions.submitSelectC()); 
+    dispatch(ToolsSendActions.submitSelectM()); 
+}, [id, dispatch]);
+
 
   return (
     <>

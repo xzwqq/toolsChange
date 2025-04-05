@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {GoogleOAuthProvider} from '@react-oauth/google'
 import store from './store/store.ts'
+import '../shared/styles/main.scss'
 import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(

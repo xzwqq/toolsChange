@@ -1,5 +1,6 @@
 import React from "react"
 import { history } from "../../../app/providers/history"
+import './header.scss'
 
 const Header: React.FC = () => {
     const isAuth = localStorage.getItem('token')
