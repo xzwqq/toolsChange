@@ -3,6 +3,7 @@ import { submitRegister } from '../../../shared/api/authAPI.ts';
 import { RegisterActions } from './registerSlice.ts';
 import { history } from '../../../app/providers/history.js';
 import { PayloadAction } from '@reduxjs/toolkit';
+import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 
 function* handleSubmitForm(action: PayloadAction): Generator {
 	try {
@@ -14,9 +15,8 @@ function* handleSubmitForm(action: PayloadAction): Generator {
 	
 		if (typeof error === "object" && error !== null && "status" in error) {
 			const err = error as { status: number };
-	
 			if (err.status === 409) {
-				alert('пользователь с такой почтой уже существует!');
+				yield put(HelperActions.setErrorNetwork('пользователь с такой почтой уже существует!'));
 			}
 		}
 	}

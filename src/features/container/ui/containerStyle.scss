@@ -1,4 +1,36 @@
-img{
-    width: 10em;
-    height: 10em;
+@use '../../../shared/styles/helpers/function.scss' as *;
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: rem(10);
+
+	&_item {
+		display: flex;
+		flex-direction: column;
+		margin: rem(10);
+	}
+	&_img {
+		width: rem(236);
+		height: rem(200);
+	}
+	&_text {
+		margin-top: rem(13);
+		color: #000;
+		font-family: 'Unbounded';
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+	}
+	&_price {
+		color: #000;
+		font-family: "Unbounded";
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+        margin-top: rem(1);
+	}
 }

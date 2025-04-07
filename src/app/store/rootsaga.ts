@@ -1,9 +1,9 @@
 import {all} from 'redux-saga/effects';
-import {watchRegister} from '../../features/formRegister/index.js';
-import {watchLogin} from "../../features/formLogin/index.js";
-import {watchingToolsForm} from "../../features/formToolsSend/index.js";
-import { watchContainer } from '../../features/container/index.js';
-import { watchEdit } from '../../features/editContainer/index.js';
+import {watchRegister} from '../../features/formRegister/index.ts';
+import {watchLogin} from "../../features/formLogin/index.ts";
+import {watchingToolsForm} from "../../features/formToolsSend/index.ts";
+import { watchContainer } from '../../features/container/index.ts';
+import { watchEdit } from '../../features/editContainer/index.ts';
 
 export default function* rootSaga() {
     yield all([

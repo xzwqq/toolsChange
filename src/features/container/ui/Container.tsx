@@ -26,18 +26,20 @@ const Container = ({type}: { type: string }) => {
 			{container?.map((content: content) => {
 				if (type === 'my') {
 					return (
-						<div key={content.id} className='container-item'>
-							<img src={content.photos[0]} className='img' alt='фото обьявления' />
-							<h2>{content.owner.firstname}</h2>
+						<div key={content.id} className='container_item'>
+							<img src={content.photos[0]} className='container_img' alt='фото обьявления' />
+							<h2 className='container_text'>{content.category.name}</h2>
+							<h2 className='container_text'>{content.price}₽</h2>
 							<button onClick={() => dispatch(ContainerActions.submitDeleteMyContainer({ id: content.id }))}>delete</button>
 							<Link to={`/edit/${content.id}`}>edit</Link>
 						</div>
 					)
 				}else{
                     return (
-						<div key={content.id} className='container-item'>
-							<img src={content.photos[0]} className='img' alt='фото обьявления' />
-							<h2>{content.owner.firstname}</h2>
+						<div key={content.id} className='container_item'>
+							<img src={content.photos[0]} className='container_img' alt='фото обьявления' />
+							<h2 className='container_text'>{content.category.name}</h2>
+							<h2 className='container_text'>{content.price}₽</h2>
 						</div>
                     )
                 }

@@ -19,7 +19,12 @@ const store = configureStore({
         container: containerSlice,
         edit: editSlice,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: ['toolsSend/submit'],
+          ignoredPaths: ['payload.files']
+        }
+      }).concat(sagaMiddleware),
 });
 
 //здесь был зек виталя

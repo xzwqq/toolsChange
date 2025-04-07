@@ -3,6 +3,7 @@ import {
 	Routes,
 	Route
 } from 'react-router-dom';
+import { toast, ToastContainer, Zoom } from 'react-toastify';
 import Registration from '../pages/Registration/Registration.tsx';
 import Home from '../pages/Home/Home.tsx';
 import Login from '../pages/Login/Login.tsx';
@@ -19,6 +20,7 @@ import { history } from './providers/history.ts';
 function App() {
 	const dispatch = useDispatch();
 	const isLoading = useSelector((state: RootState) => state.helper.isLoading);
+	const error = useSelector((state: RootState) => state.helper.errorNetwork);
 
 	useEffect(() => {
 		const unlisten = history.listen(({ location }) => {
@@ -29,9 +31,28 @@ function App() {
 		return () => unlisten();
 	}, [dispatch]);
 
+	useEffect(() => {
+		if (error) {
+			toast.error(`${error}`);
+		}
+	}, [error]);
+
 	return (
 		<>
 			{isLoading && <Spinner />}
+			<ToastContainer
+				position='top-right'
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick={false}
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme='light'
+				transition={Zoom}
+			/>
 			<HistoryRouter history={history}>
 				<Routes>
 					<Route path='/' element={<Home />} />
