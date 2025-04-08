@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { LoginActions } from '../model/loginSlice.js';
+import { LoginActions } from '../model/loginSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { history } from '../../../app/providers/history.js';
-import { HelperActions } from '../../../utils/helper/helperSlice.js';
+import { HelperActions } from '../../../utils/helper/helperSlice.ts';
+import {form} from '../type/loginType.ts'
 
 const FormLogin = () => {
 	const location = useLocation();
@@ -14,22 +15,22 @@ const FormLogin = () => {
 	const stateParam = params.get('state'); // Получаем state
 	const navigate = useNavigate;
 	const dispatch = useDispatch();
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<form>({
 		login: '',
 		password: ''
 	});
 
-	const handleChange = e => {
+	const handleChange = (e: { target: { name: string; value: string; }; }) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		dispatch(LoginActions.submit(formData));
 	};
 
-	const loginGoogleLogin = e => {
+	const loginGoogleLogin = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		const clientId =
 			'516154092590-oohtfj363v391j61f005jjgnbpb9jbb6.apps.googleusercontent.com';
@@ -50,7 +51,7 @@ const FormLogin = () => {
 				.then(response => {
 					localStorage.setItem('token', response.data);
 					console.log('Токен получен:', response.data);
-					navigate('/');
+					window.location.href = '/';
 				})
 				.catch(error => {
 					console.error('Ошибка авторизации:', error);
@@ -72,8 +73,8 @@ const FormLogin = () => {
 						value={formData.login}
 						required
 						placeholder='Почта'
-						maxLength='100'
-						minLength='3'
+						maxLength={100}
+						minLength={3}
 					/>
 					<input
 						className='gmail-input'
@@ -83,8 +84,8 @@ const FormLogin = () => {
 						value={formData.password}
 						required
 						placeholder='Пароль'
-						maxLength='100'
-						minLength='3'
+						maxLength={100}
+						minLength={3}
 					/>
 					<div className='option_login'>
 						<label className='container-check'>

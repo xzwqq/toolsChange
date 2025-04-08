@@ -7,7 +7,7 @@ import { toast, ToastContainer, Zoom } from 'react-toastify';
 import Registration from '../pages/Registration/Registration.tsx';
 import Home from '../pages/Home/Home.tsx';
 import Login from '../pages/Login/Login.tsx';
-import MyProfile from '../pages/MyProfile/MyProfile.tsx';
+import MyProfile from '../pages/MyProfile/ui/MyProfile.tsx';
 import { EditContainer } from '../features/editContainer/index.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import ToolsSend from '../pages/ToolsSend/ToolsSend.tsx';
@@ -21,6 +21,8 @@ function App() {
 	const dispatch = useDispatch();
 	const isLoading = useSelector((state: RootState) => state.helper.isLoading);
 	const error = useSelector((state: RootState) => state.helper.errorNetwork);
+	const sucsses = useSelector((state: RootState) => state.helper.sucsses);
+	
 
 	useEffect(() => {
 		const unlisten = history.listen(({ location }) => {
@@ -36,9 +38,14 @@ function App() {
 			toast.error(`${error}`);
 		}
 	}, [error]);
+	useEffect(() => {
+		if (sucsses) {
+			toast(`${sucsses}`);
+		}
+	}, [sucsses]);
 
 	return (
-		<>
+		<>	
 			{isLoading && <Spinner />}
 			<ToastContainer
 				position='top-right'

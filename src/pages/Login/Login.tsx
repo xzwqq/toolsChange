@@ -1,5 +1,5 @@
 import { history } from '../../app/providers/history';
-import { FormLogin } from '../../features/formLogin/index';
+import { FormLogin } from '../../features/formLogin/index.ts';
 
 const Login = () => {
 	return (

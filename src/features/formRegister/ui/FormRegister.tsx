@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
-import { RegisterActions } from '../model/registerSlice.js';
+import { RegisterActions } from '../model/registerSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
-import {HelperActions} from '../../../utils/helper/helperSlice.js'
+import {HelperActions} from '../../../utils/helper/helperSlice.ts'
 import { history } from '../../../app/providers/history.js';
 import axios from 'axios';
 
@@ -23,7 +23,7 @@ const FormRegister = () => {
 		password: ''
 	});
 
-	const handleChange = e => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};

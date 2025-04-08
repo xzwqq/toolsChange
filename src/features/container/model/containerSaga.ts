@@ -11,6 +11,15 @@ function* getMyContainer(): Generator {
         yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
         yield put(ContainerActions.setError(error))
+        if (typeof error === 'object' && error !== null && 'status' in error) {
+			const err = error as { status: number };
+	
+			if (err.status === 401) {
+				yield put(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'));
+                localStorage.clear()
+                yield put(HelperActions.setIsloadingSucsses())
+			}
+		}
     }
 }
 function* getAllContainer(): Generator {
@@ -21,13 +30,25 @@ function* getAllContainer(): Generator {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }catch(error: any){
         yield put(ContainerActions.setError(error.message))  
-        yield put(HelperActions.setErrorNetwork(error.message))
+        if (typeof error === 'object' && error !== null && 'status' in error) {
+			const err = error as { status: number };
+			
+			if (err.status === 401) {
+				yield put(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'));
+                localStorage.clear()
+                yield put(HelperActions.setIsloadingSucsses())
+			} else{
+                yield put(HelperActions.setErrorNetwork(error.message))
+            }
+		}
     }
 }
 
 function* deleteMyContainer(action: PayloadAction<{ id: number }>): Generator {
+    console.log(action.payload)
     try{
-        yield call(deleteContainer, action.payload)
+        yield call(deleteContainer, action.payload.id)
+        yield put(HelperActions.setSucsses('Вы успешно удалили обьявление!'))
     }catch(err){
         console.log(err)
         yield put(HelperActions.setErrorNetwork('Не получилось удалить обьявленине'))

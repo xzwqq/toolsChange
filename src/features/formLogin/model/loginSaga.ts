@@ -1,15 +1,17 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { submitLogin } from '../../../shared/api/authAPI.ts';
 import { LoginActions } from './loginSlice.ts';
-import { history } from '../../../app/providers/history.js';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import { PayloadAction } from '@reduxjs/toolkit';
+import { form } from '../type/loginType.ts';
 
-function* handleSubmitForm(action: PayloadAction): Generator {
+function* handleSubmitForm(action: PayloadAction<form>): Generator {
+
 	try {
 		const response = yield call(submitLogin, action.payload);
 		yield put(LoginActions.setSuccess(response));
-		yield call([history, history.push], '/');
+		window.location.href = '/'
+		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error) {
 		yield put(LoginActions.setError(error));
 

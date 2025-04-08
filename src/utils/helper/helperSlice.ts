@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState ={
     isLoading : false,
     errorNetwork: null,
+    sucsses: null,
 }
 
 const helperSlice = createSlice({
@@ -11,6 +12,9 @@ const helperSlice = createSlice({
     reducers : {
         setIsloadingSucsses: (state) =>{
             state.isLoading = false
+        },
+        setSucsses:(state, action) =>{
+            state.sucsses = action.payload
         },
         setErrorNetwork: (state, action) =>{
             state.errorNetwork = action.payload

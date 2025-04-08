@@ -1,4 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
+import { form } from '../type/loginType';
 
 const loginSlice = createSlice({
 	name: 'login',
@@ -18,7 +19,7 @@ const loginSlice = createSlice({
 
 export const LoginActions = {
 	...loginSlice.actions,
-	submit: createAction(`${loginSlice.name}/submit`)
+	submit: createAction<form>(`${loginSlice.name}/submit`)
 };
 
 export default loginSlice.reducer;
