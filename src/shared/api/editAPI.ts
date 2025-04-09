@@ -1,3 +1,4 @@
+import { PidorokFinish } from '../../features/editContainer/type/editType.js'
 import {rootAxios} from './rootAxios.js'
 const token = localStorage.getItem('token')
 
@@ -6,7 +7,7 @@ export const getEditContainer = async (id: string | number) =>{
     return response.data
 }
 
-export const putEditContainer = async (data: FormData, id: number) =>{
+export const putEditContainer = async (data: FormData | PidorokFinish, id: string | number) =>{
     console.log(id)
     const response = await rootAxios.put(`tools/${id}`, data, {
 		headers: {
