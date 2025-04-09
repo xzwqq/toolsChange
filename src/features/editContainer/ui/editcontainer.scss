@@ -1,0 +1,33 @@
+@use '../../../shared/styles/helpers/function.scss' as *;
+
+.dlt {
+	width: rem(40);
+	height: rem(40);
+	border-radius: rem(50);
+	background-color: rgba(217, 217, 217, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	cursor: pointer;
+    margin-left: rem(-20);
+    margin-bottom: rem(-20);
+    z-index: 3;
+    position: relative;
+    &_img{
+        border: none;
+        background-color: transparent;
+    }
+}
+.active{
+    background-color: #ffbf00;
+}
+.editphoto{
+    flex-direction: row;
+    display: flex;
+}
+.editPhotos{
+    margin-right: rem(20);
+}
+.orig{
+    margin-left: rem(20);
+}

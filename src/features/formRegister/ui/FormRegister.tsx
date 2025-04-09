@@ -5,18 +5,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import {HelperActions} from '../../../utils/helper/helperSlice.ts'
 import { history } from '../../../app/providers/history.js';
 import axios from 'axios';
+import { register } from '../type/registerType.ts';
 
 const FormRegister = () => {
 	const location = useLocation();
 	const params = new URLSearchParams(location.search);
 	const hasFetched = useRef(false);
 	const authCode = params.get('code');
-	const stateParam = params.get('state'); // Получаем state
+	const stateParam = params.get('state'); 
 
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<register>({
 		login: '',
 		lastname: '',
 		firstname: '',
@@ -28,12 +29,12 @@ const FormRegister = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		dispatch(RegisterActions.submit(formData));
 	};
 
-	const loginGoogleLogin = e => {
+	const loginGoogleLogin = (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		const clientId =
 			'516154092590-oohtfj363v391j61f005jjgnbpb9jbb6.apps.googleusercontent.com';
@@ -76,8 +77,8 @@ const FormRegister = () => {
 						value={formData.login}
 						required
 						placeholder='Почта'
-						maxLength='100'
-						minLength='3'
+						maxLength={100}
+						minLength={3}
 					/>
 					<input
 						type='text'
@@ -86,8 +87,8 @@ const FormRegister = () => {
 						value={formData.lastname}
 						required
 						placeholder='Фамилия'
-						minLength='3'
-						maxLength='100'
+						minLength={3}
+						maxLength={100}
 						className='gmail-input'
 					/>
 					<input
@@ -97,8 +98,8 @@ const FormRegister = () => {
 						value={formData.firstname}
 						required
 						placeholder='Имя'
-						minLength='1'
-						maxLength='100'
+						minLength={1}
+						maxLength={100}
 						className='gmail-input'
 					/>
 					<input
@@ -109,8 +110,8 @@ const FormRegister = () => {
 						value={formData.password}
 						required
 						placeholder='Пароль'
-						maxLength='100'
-						minLength='3'
+						maxLength={100}
+						minLength={3}
 					/>
 					<div className='option_login'>
 						<label className='container-check'>

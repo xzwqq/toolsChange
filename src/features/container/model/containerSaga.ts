@@ -27,20 +27,8 @@ function* getAllContainer(): Generator {
         const response = yield call(AllContainer)
         yield put(ContainerActions.setSuccses(response))       
         yield put(HelperActions.setIsloadingSucsses())
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    }catch(error: any){
-        yield put(ContainerActions.setError(error.message))  
-        if (typeof error === 'object' && error !== null && 'status' in error) {
-			const err = error as { status: number };
-			
-			if (err.status === 401) {
-				yield put(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'));
-                localStorage.clear()
-                yield put(HelperActions.setIsloadingSucsses())
-			} else{
-                yield put(HelperActions.setErrorNetwork(error.message))
-            }
-		}
+    }catch(error){
+        yield put(ContainerActions.setError(error))  
     }
 }
 

@@ -8,7 +8,6 @@ import Registration from '../pages/Registration/Registration.tsx';
 import Home from '../pages/Home/Home.tsx';
 import Login from '../pages/Login/Login.tsx';
 import MyProfile from '../pages/MyProfile/ui/MyProfile.tsx';
-import { EditContainer } from '../features/editContainer/index.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import ToolsSend from '../pages/ToolsSend/ToolsSend.tsx';
 import Spinner from '../widgets/spinner/Spinner.tsx';
@@ -16,6 +15,7 @@ import { useEffect } from 'react';
 import { HelperActions } from '../utils/helper/helperSlice.ts';
 import { RootState } from './store/store.ts';
 import { history } from './providers/history.ts';
+import Edit from '../pages/Edit/Edit.tsx';
 
 function App() {
 	const dispatch = useDispatch();
@@ -37,12 +37,10 @@ function App() {
 		if (error) {
 			toast.error(`${error}`);
 		}
-	}, [error]);
-	useEffect(() => {
 		if (sucsses) {
 			toast(`${sucsses}`);
 		}
-	}, [sucsses]);
+	}, [error, sucsses]);
 
 	return (
 		<>	
@@ -67,7 +65,7 @@ function App() {
 					<Route path='/login' element={<Login />} />
 					<Route path='/my' element={<MyProfile />} />
 					<Route path='/toolsend' element={<ToolsSend />} />
-					<Route path='/edit/:id' element={<EditContainer />} />
+					<Route path='/edit/:id' element={<Edit />} />
 				</Routes>
 			</HistoryRouter>
 		</>

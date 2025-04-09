@@ -1,57 +1,96 @@
 @use '../../../shared/styles/helpers/function.scss' as *;
 
-.root-formsend {
-	width: rem(1120);
-	height: rem(734);
-	background-color: rgba(255, 255, 255, 1);
-	border-radius: rem(20);
+// .tools_root {
+// 	place-items: center;
+// 	align-items: flex-start;
+// }
+
+.toolsend_h1 {
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(40);
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-left: rem(240);
+	margin-top: rem(90);
+}
+.toolsend_p {
+	margin-top: rem(120);
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(40);
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-left: rem(240);
 }
 
 .formSend {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
+	margin-left: rem(240);
 }
 .inputsend {
 	display: flex;
 	flex-direction: column;
 }
 .selectsend {
-	border-radius: 10px;
-	background: #6d6d6d;
-	width: rem(480);
-	height: rem(40);
-	border-color: transparent;
-	color: white;
-	margin-top: rem(60);
+	width: 1004px;
+	height: 79px;
+	border-radius: 15px;
+	border: 3px solid #ffbf00;
+	background: #ededed;
+}
+.select {
+	&_type {
+		margin-top: rem(80);
+	}
+	&_mark {
+		margin-top: rem(90);
+	}
+	&_tools {
+		margin-top: rem(90);
+	}
+}
+.allP {
+	margin-bottom: rem(15);
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(23);
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
 }
 .but-send {
 	border-radius: 10px;
 	background: #ffbf00;
-	width: rem(110);
+	width: rem(270);
 	height: rem(40);
 	border-color: transparent;
 	margin-top: rem(20);
+	color: #fff;
+	font-family: 'Unbounded';
+	font-size: 25px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin-bottom: rem(70);
 }
 .option-send {
 	color: #ffbf00;
 }
 .file-upload {
-	width: rem(500);
-	height: rem(650);
-	border-radius: rem(30);
-	background-color: rgba(184, 184, 182, 1);
-	margin-top: rem(20);
+	border-radius: rem(20);
+	background: #d9d9d9;
+	width: rem(190);
+	height: rem(180);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
 .send-photo {
-	width: rem(139);
-	height: rem(105);
-	margin-bottom: rem(50);
+	width: rem(70);
+	height: rem(65);
 }
 .file-input {
 	display: none;
@@ -70,9 +109,90 @@
 	line-height: normal;
 }
 .selectsend::placeholder {
-	color: #fff;
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: normal;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
+}
+
+.buton_sost {
+	margin-top: rem(80);
+}
+
+.btn_sost {
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(20);
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border-radius: 15px;
+	background: #a1a19f;
+	border-color: transparent;
+	width: rem(100);
+	height: rem(40);
+}
+
+.soso {
+	margin-left: rem(30);
+}
+
+.discripton {
+	border-radius: 30px;
+	background: #d9d9d9;
+	width: rem(900);
+	height: rem(350);
+	border-color: transparent;
+}
+.input {
+	&_discption {
+		margin-top: rem(80);
+	}
+	&_price {
+		margin-top: rem(80);
+	}
+}
+.imager {
+	margin-top: rem(70);
+}
+.suck {
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(40);
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.photo-pr {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: rem(60);
+}
+.preview-image {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.img_txt {
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(20);
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: rem(12);
+}
+.prev_img {
+	width: rem(190);
+	height: rem(180);
+	position: relative;
+	z-index: 1;
 }

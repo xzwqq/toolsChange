@@ -1,4 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
+import { register } from '../type/registerType';
 
 const registerSlice = createSlice({
 	name: 'form',
@@ -16,8 +17,9 @@ const registerSlice = createSlice({
 	}
 });
 
-export const RegisterActions = { ...registerSlice.actions,
-	submit: createAction(`${registerSlice.name}/submit`),
+export const RegisterActions = { 
+	...registerSlice.actions,
+	submit: createAction<register>(`${registerSlice.name}/submit`),
  };
 
 export default registerSlice.reducer;

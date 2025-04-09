@@ -32,15 +32,21 @@ const FormToolsSend: React.FC = () => {
     dispatch(ToolsSendActions.submit(nasral));
   };
 
+  const handleConditionChange = (condition: string) => {
+    setFormData(prev => ({ ...prev, condition }));
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
     setFiles(selectedFiles);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLButtonElement> ) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    console.log(formData)
   };
+
 
   useEffect(() => {
     dispatch(ToolsSendActions.submitSelectM());
@@ -49,72 +55,123 @@ const FormToolsSend: React.FC = () => {
 
   return (
     <div className='root-formsend'>
+      <h1 className='toolsend_h1'>Новое объявление</h1>
+			<h1 className='toolsend_p'>Параметры</h1>
       <form onSubmit={submitForm} className='formSend'>
-        <div className="file-upload">
-          <label className="file-input-label">
-            <img src="/svgImage/downloadimage.svg" alt="upload photo" className='send-photo' />
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={handleFileChange}
-              className="file-input"
-            />
-            <span className='btn-photo'>Загрузите картинку(и)</span>
-          </label>
-        </div>
+        
         <div className="inputsend">
-          <select className='selectsend' name='type' value={formData.type} onChange={handleChange} required>
-            <option value=''>Выберите тип</option>
-            <option value='EXCHANGE'>Обмен</option>
-            <option value='RENT'>Аренда</option>
-            <option value='SALE'>Продажа</option>
-          </select>
 
-          <select className='selectsend' name='condition' value={formData.condition} onChange={handleChange} required>
-            <option value=''>Выберите состояние</option>
-            <option value='USED'>б/у</option>
-            <option value='NEW'>Новое</option>
-          </select>
+          <div className="select_type">
+            <p className='allP'>Тип Обьявления</p>
+            <select className='selectsend' name='type' value={formData.type} onChange={handleChange} required>
+              <option value=''>Выберите тип</option>
+              <option value='EXCHANGE'>Обмен</option>
+              <option value='RENT'>Аренда</option>
+              <option value='SALE'>Продажа</option>
+            </select>
+        </div>
 
-          <select className='selectsend' name='categoryId' value={formData.categoryId} onChange={handleChange} required>
-            <option value=''>Выберите инструмент</option>
-            {toolSelecteC?.map(tools => (
-              <option key={tools.id} value={tools.id}>
-                {tools.name}
-              </option>
-            ))}
-          </select>
+          <div className="buton_sost">
+            <p className='allP'>Состояние</p>
+            <div className="sostoyanie">
+              <button 
+                type="button" 
+                className={`btn_sost ${formData.condition === 'NEW' ? 'active' : ''}`} 
+                onClick={() => handleConditionChange('NEW')}
+              >
+                Новое
+              </button>
+              <button 
+                type="button" 
+                className={`btn_sost soso ${formData.condition === 'USED' ? 'active' : ''}`} 
+                onClick={() => handleConditionChange('USED')}
+              >
+                Б/у
+              </button>
+            </div>
+          </div>
+          
+          
+          <div className="select_tools">
+            <p className='allP'>Тип Инструмента</p>
+            <select className='selectsend' name='categoryId' value={formData.categoryId} onChange={handleChange} required>
+              <option value=''>Выберите инструмент</option>
+              {toolSelecteC?.map(tools => (
+                <option key={tools.id} value={tools.id}>
+                  {tools.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <select className='selectsend' name='manufacturerId' value={formData.manufacturerId} onChange={handleChange} required>
-            <option value=''>Выберите производителя</option>
-            {manufacturers?.map(manufacturer => (
-              <option key={manufacturer.id} value={manufacturer.id}>
-                {manufacturer.name}
-              </option>
-            ))}
-          </select>
+          <div className="select_mark">
+            <p className='allP'>Производитель</p>
+            <select className='selectsend' name='manufacturerId' value={formData.manufacturerId} onChange={handleChange} required>
+              <option value=''>Выберите производителя</option>
+              {manufacturers?.map(manufacturer => (
+                <option key={manufacturer.id} value={manufacturer.id}>
+                  {manufacturer.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <input 
-            className='selectsend' 
-            name='price' 
-            value={formData.price}
-            onChange={handleChange} 
-            type='number' 
-            placeholder='Цена' 
-            required 
-            min="0"
-          />
+          <div className="imager">
 
-          <input 
-            className='selectsend' 
-            name='description' 
-            value={formData.description} 
-            onChange={handleChange} 
-            type='text' 
-            placeholder='Описание' 
-            required
-          />
+              <p className='suck'>Подробности</p>
+              <p className='img_txt'>Фотографии</p>
+              
+              <div className="photo-pr">
+                <div className="file-upload">
+                  <label className="file-input-label">
+                    <img src="/public/svgImage/dwnldImage.svg" alt="upload photo" className='send-photo' />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleFileChange}
+                      className="file-input"
+                    />
+                  </label>
+                </div>
+
+                <div className="preview-image">
+                  {files.map((file)=>{
+                    const result = URL.createObjectURL(file)
+                    return(
+                      <img className='prev_img orig' src={result} alt="preview" />
+                    )
+                  })}
+                </div>
+              </div>
+          </div>
+
+          <div className="input_discption">
+            <p className='allP'>Описание объявления</p>
+            <input 
+              className='discripton' 
+              name='description' 
+              value={formData.description} 
+              onChange={handleChange} 
+              type='text' 
+              required
+            />
+          </div>
+
+          <div className="input_price">
+            <p className='allP'>Цена</p>
+            <input 
+              className='selectsend' 
+              name='price' 
+              value={formData.price}
+              onChange={handleChange} 
+              type='number' 
+              placeholder='₽' 
+              required 
+              min="0"
+            />
+          </div>
+
 
           <button className='but-send' type='submit' disabled={files.length === 0}>
             Выложить

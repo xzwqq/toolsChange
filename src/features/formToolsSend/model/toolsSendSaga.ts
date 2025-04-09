@@ -15,10 +15,8 @@ import { history } from '../../../app/providers/history';
 function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
 	try {
 		const files: File[] = yield select((state: RootState) => state.toolsSend.files);
-
 		const data = new FormData();
-    data.append('tool',new Blob([JSON.stringify(action.payload.tool)], {type: 'application/json'}));
-
+    	data.append('tool',new Blob([JSON.stringify(action.payload.tool)], {type: 'application/json'}));
 		for (let i = 0; i < files.length; i++) {
 			data.append('files', files[i]);
 		}
@@ -27,19 +25,9 @@ function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
 		yield put(ToolsSendActions.setSuccess(response));
     	yield call([history, history.push], '/my')
 		yield put(HelperActions.setSucsses('Вы успешно выложили обьявление!'))
-	} catch (error: any) {
-		yield put(ToolsSendActions.setError(error.message));
-		if (typeof error === 'object' && error !== null && 'status' in error) {
-			const err = error as { status: number };
-
-			if (err.status === 401) {
-				yield put(
-					HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста')
-				);
-			} else {
-				yield put(HelperActions.setErrorNetwork(error.message));
-			}
-		}
+	} catch (error) {
+		yield put(ToolsSendActions.setError(error));
+		
 	}
 }
 
@@ -50,17 +38,6 @@ function* toolsSelectC(): Generator {
 		yield put(HelperActions.setIsloadingSucsses());
 	} catch (error: any) {
 		yield put(ToolsSendActions.setError(error.message));
-		if (typeof error === 'object' && error !== null && 'status' in error) {
-			const err = error as { status: number };
-
-			if (err.status === 401) {
-				yield put(
-					HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста')
-				);
-			} else {
-				yield put(HelperActions.setErrorNetwork(error.message));
-			}
-		}
 	}
 }
 

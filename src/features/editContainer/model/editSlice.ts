@@ -31,11 +31,15 @@ const submitMyContainer = createAction(
     `${editSlice.name}/submitMyContainer`,
     (data: PidorokSend) => ({ payload: data })
 );
+const submitGetContainer = createAction(
+    `${editSlice.name}/submitGetContainer`,
+    (data: string) => ({ payload: data })
+);
 
 export const EditActions = {
     ...editSlice.actions,
     submitMyContainer,
-    submitGetContainer: createAction<string>(`${editSlice.name}/submitGetContainer`),
+    submitGetContainer,
 };
  
 

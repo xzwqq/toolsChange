@@ -3,12 +3,14 @@ import { submitRegister } from '../../../shared/api/authAPI.ts';
 import { RegisterActions } from './registerSlice.ts';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
+import { register } from '../type/registerType.ts';
+import { history } from '../../../app/providers/history.ts';
 
-function* handleSubmitForm(action: PayloadAction): Generator {
+function* handleSubmitForm(action: PayloadAction<register>): Generator {
 	try {
 		const response = yield call(submitRegister, action.payload);
 		yield put(RegisterActions.setSuccess(response));
-		window.location.href = '/'
+		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error: unknown) {
 		yield put(RegisterActions.setError(error));
@@ -17,8 +19,6 @@ function* handleSubmitForm(action: PayloadAction): Generator {
 			const err = error as { status: number };
 			if (err.status === 409) {
 				yield put(HelperActions.setErrorNetwork('пользователь с такой почтой уже существует!'));
-			}else{
-				yield put(HelperActions.setErrorNetwork('Network Error'));
 			}
 		}
 	}

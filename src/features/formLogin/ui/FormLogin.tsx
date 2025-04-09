@@ -12,7 +12,7 @@ const FormLogin = () => {
 	const params = new URLSearchParams(location.search);
 	const hasFetched = useRef(false);
 	const authCode = params.get('code');
-	const stateParam = params.get('state'); // Получаем state
+	const stateParam = params.get('state');
 	const navigate = useNavigate;
 	const dispatch = useDispatch();
 	const [formData, setFormData] = useState<form>({
