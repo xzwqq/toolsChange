@@ -22,7 +22,6 @@ rootAxios.interceptors.request.use(
     }
   );
   
-  // Добавляем интерцептор ответов для обработки ошибок
   rootAxios.interceptors.response.use(
     (response) => response,
     (error) => {

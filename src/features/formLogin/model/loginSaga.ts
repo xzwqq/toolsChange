@@ -14,8 +14,6 @@ function* handleSubmitForm(action: PayloadAction<form>): Generator {
 		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error) {
-		yield put(LoginActions.setError(error));
-
 		if (typeof error === 'object' && error !== null && 'status' in error) {
 			const err = error as { status: number };
 			

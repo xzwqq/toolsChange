@@ -2,7 +2,6 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     container: [],
-    error: '',
 }
 
 const containerSlice = createSlice({
@@ -11,9 +10,6 @@ const containerSlice = createSlice({
     reducers: {
         setSuccses: (state, action) =>{
             state.container = action.payload
-        },
-        setError: (state, action) =>{
-            state.error = action.payload
         },
     }
 })

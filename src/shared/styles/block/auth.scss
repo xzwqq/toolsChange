@@ -15,12 +15,11 @@
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .close-auth{
-    color: #fff;
+    color: rgb(255, 252, 252);
     font-size: rem(30);
     cursor: pointer;
-    position: absolute;
-    left: 65%;
-    top: 5%;
+    margin-left: rem(530);
+	font-family: 'Unbounded';
 }
 
 .roots_login {
@@ -53,19 +52,7 @@
 	border: transparent;
 	margin-bottom: rem(20);
 }
-.option_login {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: rem(40);
-}
 
-.container-check {
-	margin-right: rem(80);
-	display: flex;
-	justify-content: center;
-}
 
 .checkmark {
 	color: #000;
@@ -76,15 +63,7 @@
 	line-height: normal;
 }
 
-.forgot_password_text {
-	color: #000;
-	font-family: Unbounded;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	text-decoration: underline;
-}
+
 
 .login-btn-input {
 	margin-bottom: rem(45);
@@ -105,14 +84,14 @@
 
 .after-form {
 	width: rem(520);
-	height: rem(220);
+	height: rem(269);
 	background: #ffbf00;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
 }
 
 .google-form {
-	padding-top: rem(30);
+	padding-top: rem(50);
 	padding-left: rem(50);
 }
 

@@ -2,6 +2,9 @@ export interface Pidorok {
 	type: string;
 	condition: string;
 	price: string;
+	owner:{
+		firstname: string;
+	}
 	category: {
 		id: string;
 		name: string;

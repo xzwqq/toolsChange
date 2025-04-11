@@ -6,7 +6,7 @@
 		height: rem(70);
 		background-color: rgba(51, 51, 51, 1);
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 		flex-direction: row;
 		align-items: center;
 		z-index: 1;
@@ -21,19 +21,29 @@
 		flex-direction: row;
 		align-items: center;
 	}
+	&_soso{
+		width: 100%;
+		height: rem(70);
+		background-color: rgba(51, 51, 51, 1);
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: row;
+		align-items: center;
+		z-index: 1;
+	}
 }
 
 .svg {
 	&_like {
 		margin-left: rem(40);
-		width: rem(25);
-		height: rem(25);
+		width: rem(36);
+		height: rem(36);
 		cursor: pointer;
 	}
 	&_telega {
 		margin-left: rem(40);
-		width: rem(25);
-		height: rem(25);
+		width: rem(30);
+		height: rem(30);
 		cursor: pointer;
 	}
 	&_hz {
@@ -114,4 +124,10 @@
 .inputforHeader {
 	border-color: transparent;
 	width: rem(480);
+}
+
+.asd{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }

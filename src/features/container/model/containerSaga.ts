@@ -10,7 +10,6 @@ function* getMyContainer(): Generator {
         yield put(ContainerActions.setSuccses(response))
         yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
-        yield put(ContainerActions.setError(error))
         if (typeof error === 'object' && error !== null && 'status' in error) {
 			const err = error as { status: number };
 	
@@ -28,7 +27,7 @@ function* getAllContainer(): Generator {
         yield put(ContainerActions.setSuccses(response))       
         yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
-        yield put(ContainerActions.setError(error))  
+    console.log(error)
     }
 }
 

@@ -1,10 +1,10 @@
-import FormRegister from '../../features/formRegister/ui/FormRegister.js';
-import { history } from '../../app/providers/history.js';
+import FormRegister from '../../../features/formRegister/ui/FormRegister.js';
+import { history } from '../../../app/providers/history.js';
 
 const Registration = () => {
 	return (
 		<div className='another-login'>
-			<a onClick={() => history.back()} className='close-auth'>x</a>
+			<a onClick={() => history.push('/')} className='close-auth'>x</a>
 			<div className='roots_login'>
 				<h2 className='login_h2'>Регистрация</h2>
 				<FormRegister />

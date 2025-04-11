@@ -12,9 +12,7 @@ function* handleSubmitForm(action: PayloadAction<register>): Generator {
 		yield put(RegisterActions.setSuccess(response));
 		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
-	} catch (error: unknown) {
-		yield put(RegisterActions.setError(error));
-	
+	} catch (error) {
 		if (typeof error === "object" && error !== null && "status" in error) {
 			const err = error as { status: number };
 			if (err.status === 409) {

@@ -8,11 +8,11 @@
 
 .container {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	width: rem(1300);
 	margin: rem(10);
+	cursor: pointer;
 
 	&_item {
 		display: flex;

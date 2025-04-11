@@ -88,7 +88,6 @@ const EditContainer = () => {
             <p className='allP'>Тип Обьявления</p>
             <select className='selectsend' name='type' value={formData.type} onChange={handleChange} required>
               <option value=''>Выберите тип</option>
-              <option value='EXCHANGE'>Обмен</option>
               <option value='RENT'>Аренда</option>
               <option value='SALE'>Продажа</option>
             </select>

@@ -26,8 +26,7 @@ function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
     	yield call([history, history.push], '/my')
 		yield put(HelperActions.setSucsses('Вы успешно выложили обьявление!'))
 	} catch (error) {
-		yield put(ToolsSendActions.setError(error));
-		
+		console.log(error)
 	}
 }
 
@@ -36,8 +35,8 @@ function* toolsSelectC(): Generator {
 		const selectC: any = yield call(getToolsCategories);
 		yield put(ToolsSendActions.setSelectC(selectC));
 		yield put(HelperActions.setIsloadingSucsses());
-	} catch (error: any) {
-		yield put(ToolsSendActions.setError(error.message));
+	} catch (error) {
+		console.log(error)
 	}
 }
 
@@ -46,8 +45,8 @@ function* toolsSelectM(): Generator {
 		const selectM: any = yield call(getToolsManufacturers);
 		yield put(ToolsSendActions.setSelectM(selectM));
 		yield put(HelperActions.setIsloadingSucsses());
-	} catch (error: any) {
-		yield put(ToolsSendActions.setError(error.message));
+	} catch (error) {
+		console.log(error)
 	}
 }
 

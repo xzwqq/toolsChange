@@ -41,6 +41,12 @@ const FormLogin = () => {
 		window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}&scope=${scope}`;
 	};
 
+	useEffect(()=>{
+			dispatch(HelperActions.setIsloadingSucsses())
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		},[])
+	
+
 	useEffect(() => {
 		if (authCode && !hasFetched.current) {
 			hasFetched.current = true;
@@ -58,9 +64,6 @@ const FormLogin = () => {
 				});
 		}
 	}, [authCode, stateParam, navigate]);
-	useEffect(()=>{
-		dispatch(HelperActions.setIsloadingSucsses())
-	},[dispatch])
 	return (
 		<>
 			<div className='form-login_root'>
@@ -87,17 +90,6 @@ const FormLogin = () => {
 						maxLength={100}
 						minLength={3}
 					/>
-					<div className='option_login'>
-						<label className='container-check'>
-							<input type='checkbox' />
-							<span className='checkmark'>запомнить пароль?</span>
-						</label>
-						<div className='forgot_password'>
-							<a>
-								<p className='forgot_password_text'>Забыли пароль?</p>
-							</a>
-						</div>
-					</div>
 					<button className='login-btn-input' type='submit'>
 						Войти
 					</button>

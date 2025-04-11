@@ -4,18 +4,20 @@ import {
 	Route
 } from 'react-router-dom';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
-import Registration from '../pages/Registration/Registration.tsx';
-import Home from '../pages/Home/Home.tsx';
-import Login from '../pages/Login/Login.tsx';
-import MyProfile from '../pages/MyProfile/ui/MyProfile.tsx';
+import {Registration} from '../pages/Registration/index.ts';
+import {Home} from '../pages/Home/index.ts';
+import {Login} from '../pages/Login/index.ts';
+import {MyProfile} from '../pages/MyProfile/index.ts';
 import { useDispatch, useSelector } from 'react-redux';
-import ToolsSend from '../pages/ToolsSend/ToolsSend.tsx';
+import {ToolsSend} from '../pages/ToolsSend/index.ts';
 import Spinner from '../widgets/spinner/Spinner.tsx';
 import { useEffect } from 'react';
 import { HelperActions } from '../utils/helper/helperSlice.ts';
 import { RootState } from './store/store.ts';
 import { history } from './providers/history.ts';
-import Edit from '../pages/Edit/Edit.tsx';
+import {Edit} from '../pages/Edit/index.ts';
+import {Rating} from '../pages/Rating/index.ts';
+import { Advert } from '../pages/Advert/index.ts';
 
 function App() {
 	const dispatch = useDispatch();
@@ -27,11 +29,17 @@ function App() {
 	useEffect(() => {
 		const unlisten = history.listen(({ location }) => {
 			console.log('Новый путь:', location.pathname);
-			dispatch(HelperActions.reset());
+			if(location.pathname === '/login' || location.pathname === '/registration'){
+				dispatch(HelperActions.setIsloadingSucsses())
+				return
+			}else{
+				dispatch(HelperActions.reset());
+			}
 		});
 
 		return () => unlisten();
-	}, [dispatch]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	useEffect(() => {
 		if (error) {
@@ -65,7 +73,9 @@ function App() {
 					<Route path='/login' element={<Login />} />
 					<Route path='/my' element={<MyProfile />} />
 					<Route path='/toolsend' element={<ToolsSend />} />
+					<Route path='/advert/:id' element={<Advert />} />
 					<Route path='/edit/:id' element={<Edit />} />
+					<Route path='/rating/:id' element={<Rating/>}/>
 				</Routes>
 			</HistoryRouter>
 		</>

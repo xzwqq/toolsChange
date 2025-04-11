@@ -2,10 +2,10 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 import { RegisterActions } from '../model/registerSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
-import {HelperActions} from '../../../utils/helper/helperSlice.ts'
 import { history } from '../../../app/providers/history.js';
 import axios from 'axios';
 import { register } from '../type/registerType.ts';
+import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 
 const FormRegister = () => {
 	const location = useLocation();
@@ -45,8 +45,9 @@ const FormRegister = () => {
 		window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}&scope=${scope}`;
 	};
 	useEffect(()=>{
-			dispatch(HelperActions.setIsloadingSucsses())
-		},[dispatch])
+		dispatch(HelperActions.setIsloadingSucsses())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[])
 
 	useEffect(() => {
 		if (authCode && !hasFetched.current) {
@@ -113,17 +114,6 @@ const FormRegister = () => {
 						maxLength={100}
 						minLength={3}
 					/>
-					<div className='option_login'>
-						<label className='container-check'>
-							<input type='checkbox' />
-							<span className='checkmark'>запомнить пароль?</span>
-						</label>
-						<div className='forgot_password'>
-							<a>
-								<p className='forgot_password_text'>Забыли пароль?</p>
-							</a>
-						</div>
-					</div>
 					<button className='login-btn-input' type='submit'>
 						Войти
 					</button>
