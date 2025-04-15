@@ -6,9 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import './formadvert.scss'
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+
 
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
@@ -44,7 +42,7 @@ const FormAdvert: React.FC = () => {
     }
 
 	if (!container) {
-		return <div>Объявление не найдено</div>; // Обработка случая, когда container null
+		return <div>Объявление не найдено</div>; 
 	}
 
 	return (
@@ -61,7 +59,7 @@ const FormAdvert: React.FC = () => {
                                 >
                             {container.photos?.map((photo, index)=>(
                                 <SwiperSlide key={index}>
-                                <img src={photo} className="advert_image h-auto rounded-lg " alt="" />
+                                <img src={photo} className="advert_image h-auto rounded-lg " alt="asd" />
                                 </SwiperSlide>
                             ))}
                             </Swiper>

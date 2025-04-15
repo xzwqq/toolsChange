@@ -13,7 +13,7 @@ export const getToolsManufacturers = async () => {
 	return response.data;
 };
 
-export const sendTools = async (formdata) => {
+export const sendTools = async (formdata: FormData) => {
 	console.log(formdata)
 	const response = await axios.post(`${import.meta.env.VITE_API_URL}/tools`, formdata, {
 		headers: {

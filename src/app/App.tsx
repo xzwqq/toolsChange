@@ -1,30 +1,30 @@
+import React, { useEffect } from 'react';
 import {
 	unstable_HistoryRouter as HistoryRouter,
 	Routes,
 	Route
 } from 'react-router-dom';
 import { toast, ToastContainer, Zoom } from 'react-toastify';
-import {Registration} from '../pages/Registration/index.ts';
 import {Home} from '../pages/Home/index.ts';
 import {Login} from '../pages/Login/index.ts';
-import {MyProfile} from '../pages/MyProfile/index.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import {ToolsSend} from '../pages/ToolsSend/index.ts';
 import Spinner from '../widgets/spinner/Spinner.tsx';
-import { useEffect } from 'react';
 import { HelperActions } from '../utils/helper/helperSlice.ts';
 import { RootState } from './store/store.ts';
 import { history } from './providers/history.ts';
-import {Edit} from '../pages/Edit/index.ts';
-import {Rating} from '../pages/Rating/index.ts';
-import { Advert } from '../pages/Advert/index.ts';
+
+const MyProfile = React.lazy(() => import('../pages/MyProfile/index.ts'))
+const Edit = React.lazy(() => import('../pages/Edit/index.ts'))
+const Rating = React.lazy(() => import('../pages/Rating/index.ts'))
+const Advert = React.lazy(() => import('../pages/Advert/index.ts'))
+const Registration = React.lazy(() => import('../pages/Registration/index.ts'))
 
 function App() {
 	const dispatch = useDispatch();
 	const isLoading = useSelector((state: RootState) => state.helper.isLoading);
 	const error = useSelector((state: RootState) => state.helper.errorNetwork);
 	const sucsses = useSelector((state: RootState) => state.helper.sucsses);
-	
 
 	useEffect(() => {
 		const unlisten = history.listen(({ location }) => {

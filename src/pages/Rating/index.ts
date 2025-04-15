@@ -1,1 +1,1 @@
-export { default as Rating} from './ui/Rating.tsx'
+export { default } from './ui/Rating.tsx'

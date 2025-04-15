@@ -1,4 +1,7 @@
 @use '../../../shared/styles/helpers/function.scss' as *;
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
 
 .advert {
 	margin-top: rem(100);
@@ -6,7 +9,7 @@
 	&_name {
 		color: #000;
 		font-family: 'Unbounded';
-		font-size: rem(30);
+		font-size: rem(50);
 		font-style: normal;
 		font-weight: 700;
 		line-height: normal;
@@ -44,6 +47,7 @@
 		font-weight: 500;
 		line-height: normal;
 		margin-bottom: rem(70);
+		box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 	}
 	&_owner {
 		color: #000;

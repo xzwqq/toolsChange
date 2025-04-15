@@ -5,10 +5,10 @@ import { RatingActions } from "./ratingSlice"
 import { HelperActions } from "../../../utils/helper/helperSlice"
 
 
-function* getAllRating(action: PayloadAction<string | number>) {
+function* getAllRating(action: PayloadAction<string>) {
     try{
-        const response = yield call(getRating, action.payload) 
-        yield put(RatingActions.setSuccses(response))
+        yield call(getRating, action.payload) 
+        yield put(RatingActions.setSuccses(''))
         yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
         console.log(error)

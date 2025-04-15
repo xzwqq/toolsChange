@@ -28,7 +28,7 @@ function* sendEditContainer(action: PayloadAction<PidorokSend>): Generator {
 		yield call([history, history.push], '/my')
 		yield put(HelperActions.setSucsses('Вы успешно изменили обьявление!'));
 	} catch (error) {
-		yield put(EditActions.setError(error));
+		console.log(error)
 	}
 }
 
@@ -37,7 +37,7 @@ function* getEdit(action: PayloadAction<string>): Generator {
 		const response = yield call(getEditContainer, action.payload);
 		yield put(EditActions.setSuccses(response));
 	} catch (error) {
-		yield put(EditActions.setError(error));
+		console.log(error)
 	}
 }
 

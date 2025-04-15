@@ -1,1 +1,1 @@
-export {default as Edit} from './ui/Edit.tsx'
+export {default} from './ui/Edit.tsx'

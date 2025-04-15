@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../../../features/container/index.ts';
 import { InitHeader } from '../../../widgets/Header/index.ts';
@@ -12,7 +13,7 @@ interface content {
 		id: string | number;
 	};
 }
-const MyProfile = () => {
+const MyProfile: React.FC = () => {
 	const dispatch = useDispatch()
 	const zalupa = 'my';
 	const container: content = useSelector(
