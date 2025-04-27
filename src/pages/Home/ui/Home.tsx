@@ -1,13 +1,12 @@
 import { Container } from '../../../features/container/index.ts';
-import {InitHeader} from '../../../widgets/Header/index.ts'
-import {Header} from '../../../widgets/Header/index.ts'
-
+import { InitHeader } from '../../../widgets/Header/index.ts';
+import { Header } from '../../../widgets/Header/index.ts';
 
 const Home = () => {
-	const type = ''
+	const type = '';
 	return (
 		<div>
-			<InitHeader/>
+			<InitHeader />
 			<Header />
 			<Container type={type} />
 		</div>

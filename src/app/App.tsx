@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import {
 	unstable_HistoryRouter as HistoryRouter,
 	Routes,
@@ -21,25 +21,23 @@ const Advert = React.lazy(() => import('../pages/Advert/index.ts'))
 const Registration = React.lazy(() => import('../pages/Registration/index.ts'))
 
 function App() {
-	const dispatch = useDispatch();
-	const isLoading = useSelector((state: RootState) => state.helper.isLoading);
 	const error = useSelector((state: RootState) => state.helper.errorNetwork);
 	const sucsses = useSelector((state: RootState) => state.helper.sucsses);
 
-	useEffect(() => {
-		const unlisten = history.listen(({ location }) => {
-			console.log('Новый путь:', location.pathname);
-			if(location.pathname === '/login' || location.pathname === '/registration'){
-				dispatch(HelperActions.setIsloadingSucsses())
-				return
-			}else{
-				dispatch(HelperActions.reset());
-			}
-		});
+	// useEffect(() => {
+	// 	const unlisten = history.listen(({ location }) => {
+	// 		console.log('Новый путь:', location.pathname);
+	// 		if(location.pathname === '/login' || location.pathname === '/registration'){
+	// 			dispatch(HelperActions.setIsloadingSucsses())
+	// 			return
+	// 		}else{
+	// 			dispatch(HelperActions.reset());
+	// 		}
+	// 	});
 
-		return () => unlisten();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	// 	return () => unlisten();
+	// // eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
 	useEffect(() => {
 		if (error) {
@@ -52,7 +50,7 @@ function App() {
 
 	return (
 		<>	
-			{isLoading && <Spinner />}
+			{/* {isLoading && <Spinner />} */}
 			<ToastContainer
 				position='top-right'
 				autoClose={5000}
@@ -67,6 +65,7 @@ function App() {
 				transition={Zoom}
 			/>
 			<HistoryRouter history={history}>
+			<Suspense fallback={<Spinner />}>
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/registration' element={<Registration />} />
@@ -77,6 +76,7 @@ function App() {
 					<Route path='/edit/:id' element={<Edit />} />
 					<Route path='/rating/:id' element={<Rating/>}/>
 				</Routes>
+				</Suspense>
 			</HistoryRouter>
 		</>
 	);

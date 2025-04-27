@@ -4,7 +4,6 @@ import { LoginActions } from '../model/loginSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { history } from '../../../app/providers/history.js';
-import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import {form} from '../type/loginType.ts'
 
 const FormLogin = () => {
@@ -40,13 +39,7 @@ const FormLogin = () => {
 
 		window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${clientId}&state=${state}&redirect_uri=${redirectUri}&scope=${scope}`;
 	};
-
-	useEffect(()=>{
-			dispatch(HelperActions.setIsloadingSucsses())
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		},[])
 	
-
 	useEffect(() => {
 		if (authCode && !hasFetched.current) {
 			hasFetched.current = true;
