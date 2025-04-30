@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "jsx": "react-jsx",
+      "esModuleInterop": true,
+      "target": "ES2022",
+      "module": "ESNext",
+  
+    },
+    "include": ["src"]
+  }

@@ -1,13 +1,13 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { getEditContainer } from "../../../shared/api/editAPI";
 import { AdvertActions } from "./advertSlice";
-import {call , put, takeLatest } from 'redux-saga/effects'
-import { Pidorok } from "../../editContainer/type/editType";
+import {put, takeLatest } from 'redux-saga/effects'
+import {call} from 'typed-redux-saga'
 
 
 function* getAdvert(action: PayloadAction<string>){
     try{
-        const response: Pidorok = yield call(getEditContainer, action.payload)
+        const response = yield* call(getEditContainer, action.payload)
         yield put(AdvertActions.setSuccses(response)) 
     }catch(error){
         console.log(error)

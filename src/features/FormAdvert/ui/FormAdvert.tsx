@@ -7,6 +7,33 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import './formadvert.scss'
 
+export const type = (cont: string) => {
+    if(cont === 'SALE'){
+        return(
+        <p className='advert_sale'>Продажа</p>
+    )
+    }
+    if(cont === 'RENT'){
+        return(
+            <p className='advert_sale'>Аренда</p>
+        )
+        }
+
+    if(cont === 'NEW'){
+        return(
+            <p className='advert_sale'>Новый</p>
+        )
+    }
+    if(cont === ''){
+        return(
+            <p className='advert_sale'>Б/у</p>
+        )
+    }
+    return (
+        <p>Данных нету</p>
+    )
+}
+
 
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
@@ -17,29 +44,7 @@ const FormAdvert: React.FC = () => {
 		dispatch(AdvertActions.submitAdvert(id));
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-    const type = (cont:string) =>{
-        if(cont === 'SALE'){
-            return(
-            <p className='advert_sale'>Продажа</p>
-        )
-        }
-        if(cont === 'RENT'){
-            return(
-                <p className='advert_sale'>Аренда</p>
-            )
-            }
-
-        if(cont === 'NEW'){
-            return(
-                <p className='advert_sale'>Новый</p>
-            )
-        }
-        if(cont === ''){
-            return(
-                <p className='advert_sale'>Б/у</p>
-            )
-        }
-    }
+     
 
 	if (!container) {
 		return <div>Объявление не найдено</div>; 
