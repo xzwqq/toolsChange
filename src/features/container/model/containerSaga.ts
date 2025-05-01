@@ -8,7 +8,6 @@ function* getMyContainer(): Generator {
     try{
         const response = yield call(myContainer)
         yield put(ContainerActions.setSuccses(response))
-        yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
         if (typeof error === 'object' && error !== null && 'status' in error) {
 			const err = error as { status: number };
@@ -16,7 +15,6 @@ function* getMyContainer(): Generator {
 			if (err.status === 401) {
 				yield put(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'));
                 localStorage.clear()
-                yield put(HelperActions.setIsloadingSucsses())
 			}
 		}
     }
@@ -25,7 +23,6 @@ function* getAllContainer(): Generator {
     try{
         const response = yield call(AllContainer)
         yield put(ContainerActions.setSuccses(response))       
-        yield put(HelperActions.setIsloadingSucsses())
     }catch(error){
     console.log(error)
     }

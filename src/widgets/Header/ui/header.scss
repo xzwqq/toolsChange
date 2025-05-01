@@ -131,3 +131,57 @@
 	flex-direction: row;
 	align-items: center;
 }
+.filters-container {
+	position: absolute;
+	top: rem(160);
+	left: rem(20);
+	background: white;
+	padding: rem(20);
+	border-radius: rem(10);
+	box-shadow: 0 rem(4) rem(12) rgba(0,0,0,0.1);
+	z-index: 100;
+	display: grid;
+	gap: rem(15);
+	width: rem(300);
+  }
+  
+  .filter-group {
+	display: flex;
+	flex-direction: column;
+	gap: rem(5);
+  }
+  
+  .filter-input {
+	width: 100%;
+	padding: rem(10);
+	border: 1px solid #ffbf00;
+	border-radius: rem(5);
+	background: white;
+	
+	&:focus {
+	  outline: none;
+	  box-shadow: 0 0 rem(3) #ffbf00;
+	}
+  }
+  
+  .price-range {
+	display: grid;
+	gap: rem(10);
+  }
+  
+  .filter-actions {
+	display: flex;
+	gap: rem(10);
+	
+	button {
+	  flex: 1;
+	  padding: rem(10);
+	}
+  }
+  
+  .reset-btn {
+	background: #dc3545;
+	&:hover {
+	  background: darken(#dc3545, 10%);
+	}
+  }

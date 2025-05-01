@@ -19,6 +19,7 @@ function* handleSubmitForm(action: PayloadAction<register>): Generator {
 				yield put(HelperActions.setErrorNetwork('пользователь с такой почтой уже существует!'));
 			}
 		}
+		yield put(HelperActions.setErrorNetwork('Сервак помер('));
 	}
 }	
 

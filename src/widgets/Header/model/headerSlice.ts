@@ -1,26 +1,25 @@
-import { createAction, createSlice } from "@reduxjs/toolkit";
-const initialState ={
-    succses: null,
-}
+import { createAction, createSlice } from '@reduxjs/toolkit';
+const initialState = {
+	succses: null
+};
 
 const headerSlice = createSlice({
-    name: 'header',
-    initialState,
-    reducers:{
-        setSecces: (state, action) =>{
-            state.succses = action.payload
-        }
-    }
-})
+	name: 'header',
+	initialState,
+	reducers: {
+		setSecces: (state, action) => {
+			state.succses = action.payload;
+		}
+	}
+});
 
-const submitFilter = createAction(
-    `${headerSlice.name}/submitFilter`,
-    (data) => ({ payload: data })
-);
+const submitFilter = createAction(`${headerSlice.name}/submitFilter`, data => ({
+	payload: data
+}));
 
 export const HeaderActions = {
-    ...headerSlice.actions,
-    submitFilter,
-}
+	...headerSlice.actions,
+	submitFilter
+};
 
-export default headerSlice.reducer
+export default headerSlice.reducer;

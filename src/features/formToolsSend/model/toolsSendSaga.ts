@@ -34,7 +34,6 @@ function* toolsSelectC(): Generator {
 	try {
 		const selectC: any = yield call(getToolsCategories);
 		yield put(ToolsSendActions.setSelectC(selectC));
-		yield put(HelperActions.setIsloadingSucsses());
 	} catch (error) {
 		console.log(error)
 	}
@@ -44,7 +43,6 @@ function* toolsSelectM(): Generator {
 	try {
 		const selectM: any = yield call(getToolsManufacturers);
 		yield put(ToolsSendActions.setSelectM(selectM));
-		yield put(HelperActions.setIsloadingSucsses());
 	} catch (error) {
 		console.log(error)
 	}
