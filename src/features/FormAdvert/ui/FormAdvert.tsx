@@ -14,7 +14,6 @@ export const type = (cont: string) => {
 	if (cont === 'RENT') {
 		return <p className='advert_sale'>Аренда</p>;
 	}
-
 	if (cont === 'NEW') {
 		return <p className='advert_sale'>Новый</p>;
 	}
@@ -36,9 +35,16 @@ const FormAdvert: React.FC = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	
+	const whois = () => {
+		if(container?.owner.loginOwner !== container?.owner.loginRequester){
+			return(
+				<button className='advert_button'>Откликнуться</button>
+			)
+		}
+	}
 
 	if (!container) {
-		return <div>Объявление не найдено</div>;
+		return <div className='notFound'>Объявление не найдено</div>;
 	}
 
 	return (
@@ -58,7 +64,7 @@ const FormAdvert: React.FC = () => {
 								<img
 									src={photo}
 									className='advert_image h-auto rounded-lg '
-									alt='asd'
+									alt={`photo is ${index}`}
 								/>
 							</div>
 						))}
@@ -80,7 +86,7 @@ const FormAdvert: React.FC = () => {
 							<h3 className='advert_type'>Модель</h3>
 							<p className='advert_sale'>{container.category.name}</p>
 						</div>
-						<div className='advert_info_type'>
+						<div className='advert_info_type'>	
 							<h3 className='advert_type'>Описание</h3>
 							<p className='advert_sale ends'>{container.description}</p>
 						</div>
@@ -88,7 +94,7 @@ const FormAdvert: React.FC = () => {
 				</div>
 				<div className='advert_main_info'>
 					<h3 className='advert_price'>{container.price}₽</h3>
-					<button className='advert_button'>Откликнуться</button>
+					{whois()}
 					<div className='advert_main_info_owner'>
 						<p className='advert_owner'>{container.owner.firstname}</p>
 						<img src='/public/svgImage/MyProfile.svg' alt='' />

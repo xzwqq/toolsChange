@@ -4,7 +4,7 @@ import { getRating } from "../../../shared/api/ratingApi"
 import { RatingActions } from "./ratingSlice"
 
 
-function* getAllRating(action: PayloadAction<string>) {
+function* getAllRating(action: PayloadAction<string>): Generator {
     try{
         yield call(getRating, action.payload) 
         yield put(RatingActions.setSuccses(''))

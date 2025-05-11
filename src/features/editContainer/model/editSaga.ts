@@ -6,23 +6,28 @@ import {
 	putEditContainer
 } from '../../../shared/api/editAPI.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
-import { PidorokSend } from '../type/editType.ts';
+import { PidorokFinish, PidorokSend } from '../type/editType.ts';
 import { history } from '../../../app/providers/history.ts';
 
-function* sendEditContainer(action: PayloadAction<PidorokSend>): Generator {
-	console.log(action.payload);
-	try {
-		const data = new FormData();
-		const id = action.payload.id;
-		data.append('tool', new Blob([JSON.stringify(action.payload.tool)], {type: 'application/json'}));
-		if(action.payload.files !== null){
-			for (let i = 0; i < action.payload.files.length; i++) {
-				data.append('files', action.payload.files[i]);
+function makeCall(datas: PidorokSend){
+	const data = new FormData();
+		data.append('tool', new Blob([JSON.stringify(datas.tool)], {type: 'application/json'}));
+		if(datas.files !== null){
+			for (let i = 0; i < datas.files.length; i++) {
+				data.append('files', datas.files[i]);
 			}
 		}
-		if(action.payload.deleteFile !== null){
-			data.append('filesToDelete', new Blob([JSON.stringify(action.payload.deleteFile)], {type: 'application/json'}));
+		if(datas.deleteFile !== null){
+			data.append('filesToDelete', new Blob([JSON.stringify(datas.deleteFile)], {type: 'application/json'}));
 		}
+		return data
+}
+
+function* sendEditContainer(action: PayloadAction<PidorokSend>): Generator {
+	const datas = action.payload
+	const id = action.payload.id;
+	const data: FormData | PidorokFinish = makeCall(datas)
+	try {
 		const response = yield call(putEditContainer, data, id);
 		yield put(EditActions.setSuccses(response));
 		yield call([history, history.push], '/my')

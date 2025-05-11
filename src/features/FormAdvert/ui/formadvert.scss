@@ -109,3 +109,11 @@
 .ends{
     margin-bottom: rem(40);
 }
+
+.notFound{
+	font-family: "Unbounded";
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: rem(120);
+}

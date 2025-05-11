@@ -5,10 +5,27 @@ import { HeaderActions } from "./headerSlice";
 import { getContFilter } from "../../../shared/api/headerApi";
 import { Pidorok } from "../../../features/editContainer/type/editType";
 
+function filterPost (data: Object) {
+    let dataPost = ""
+    Object.entries(data).filter(([_, value]) => value !== '') .map(( filter ) => {
+        filter.map((item, index ) => {
+            if(index === 0){
+                dataPost +=  `${item}=`
+            }else{
+                dataPost +=  `${item}&`
+            }
+            console.log(item)
+        })
+    })
+    return dataPost.slice(0, -1)
+}
 
-function* getContainerByFilter(action: PayloadAction<string>) {
+
+function* getContainerByFilter(action: PayloadAction<Object>) {
+    const data = action.payload
+    const dataPost = filterPost(data)    
     try{
-        const response:Pidorok = yield call(getContFilter, action.payload)
+        const response:Pidorok = yield call(getContFilter, dataPost)
         yield put(ContainerActions.setSuccses(response))
     }catch(error){
         console.log(error)

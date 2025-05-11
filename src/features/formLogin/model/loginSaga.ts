@@ -9,20 +9,19 @@ import { history } from '../../../app/providers/history.ts';
 function* handleSubmitForm(action: PayloadAction<form>): Generator {
 
 	try {
-		const response = yield call(submitLogin, action.payload);
-		yield put(LoginActions.setSuccess(response));
+		yield call(submitLogin, action.payload);
 		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error) {
 		if (typeof error === 'object' && error !== null && 'status' in error) {
 			const err = error as { status: number };
-			
 			if (err.status === 404) {
 				yield put(HelperActions.setErrorNetwork('маги с таким сиянием ещё нету'));
 			} else if (err.status === 401) {
-				yield put(HelperActions.setErrorNetwork('мага пароль забыл что-ли да'));
+				yield put(HelperActions.setErrorNetwork('мага забыл пароль что-ли да'));
 			}
 		}
+		yield put(HelperActions.setErrorNetwork('Сервак помер ;('));
 	}
 }
 

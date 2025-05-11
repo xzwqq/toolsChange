@@ -2,7 +2,7 @@
 
 .another-login {
 	place-items: center;
-	padding-top: 5%;
+	padding-top: rem(20);
 	position: absolute;
 	z-index: 1;
 	left: 0;
@@ -14,11 +14,11 @@
 	background: #000;
 	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.close-auth{
-    color: rgb(255, 252, 252);
-    font-size: rem(30);
-    cursor: pointer;
-    margin-left: rem(530);
+.close-auth {
+	color: rgb(255, 252, 252);
+	font-size: rem(30);
+	cursor: pointer;
+	margin-left: rem(530);
 	font-family: 'Unbounded';
 }
 
@@ -53,7 +53,6 @@
 	margin-bottom: rem(20);
 }
 
-
 .checkmark {
 	color: #000;
 	font-family: Unbounded;
@@ -62,8 +61,6 @@
 	font-weight: 400;
 	line-height: normal;
 }
-
-
 
 .login-btn-input {
 	margin-bottom: rem(45);
@@ -123,6 +120,6 @@
 	width: rem(210);
 	height: rem(40);
 }
-.gmail-input::placeholder{
-    padding-left: rem(10);
+.gmail-input::placeholder {
+	padding-left: rem(10);
 }

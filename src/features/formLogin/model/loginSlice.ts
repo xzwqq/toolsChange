@@ -1,17 +1,10 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { form } from '../type/loginType';
 
-const initialState ={
-	response: null
-}
 const loginSlice = createSlice({
 	name: 'login',
-	initialState,
-	reducers: {
-		setSuccess: (state, action) => {
-			state.response = action.payload;
-		},
-	}
+	initialState: {},
+	reducers: {}
 });
 
 export const LoginActions = {

@@ -21,7 +21,7 @@
 		flex-direction: row;
 		align-items: center;
 	}
-	&_soso{
+	&_soso {
 		width: 100%;
 		height: rem(70);
 		background-color: rgba(51, 51, 51, 1);
@@ -35,15 +35,13 @@
 
 .svg {
 	&_like {
-		margin-left: rem(40);
 		width: rem(36);
 		height: rem(36);
 		cursor: pointer;
 	}
 	&_telega {
-		margin-left: rem(40);
-		width: rem(30);
-		height: rem(30);
+		width: rem(34);
+		height: rem(34);
 		cursor: pointer;
 	}
 	&_hz {
@@ -63,7 +61,6 @@
 		cursor: pointer;
 	}
 	&_icon {
-		margin-left: rem(40);
 		width: rem(40);
 		height: rem(40);
 		cursor: pointer;
@@ -126,62 +123,125 @@
 	width: rem(480);
 }
 
-.asd{
+.asd {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-.filters-container {
+.non-button{
+	border: none;
+	background-color: transparent;
+	width: auto;
+	margin-left: rem(30);
+	display: flex;
+	align-items: center;
+}
+
+.allFilter {
 	position: absolute;
-	top: rem(160);
-	left: rem(20);
+	place-content: center;
+	top: rem(170);
+	z-index: 100;
+	border: none;
+	border-radius: rem(10);
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.filters-container {
 	background: white;
 	padding: rem(20);
 	border-radius: rem(10);
-	box-shadow: 0 rem(4) rem(12) rgba(0,0,0,0.1);
-	z-index: 100;
 	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: rem(15);
-	width: rem(300);
-  }
-  
-  .filter-group {
+
+	width: rem(1100);
+}
+
+.filter-group {
 	display: flex;
 	flex-direction: column;
+	margin-bottom: rem(15);
 	gap: rem(5);
-  }
-  
-  .filter-input {
+}
+
+.filter-input {
 	width: 100%;
 	padding: rem(10);
 	border: 1px solid #ffbf00;
 	border-radius: rem(5);
 	background: white;
-	
+
 	&:focus {
-	  outline: none;
-	  box-shadow: 0 0 rem(3) #ffbf00;
+		outline: none;
+		box-shadow: 0 0 rem(3) #ffbf00;
 	}
-  }
-  
-  .price-range {
-	display: grid;
+}
+
+.price-range {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	gap: rem(10);
-  }
-  
-  .filter-actions {
+}
+
+.filter-actions {
 	display: flex;
 	gap: rem(10);
-	
+
 	button {
-	  flex: 1;
-	  padding: rem(10);
+		flex: 1;
+		padding: rem(10);
 	}
-  }
-  
-  .reset-btn {
-	background: #dc3545;
+}
+
+.reset-btn {
+	border-radius: 6px;
+	background: #757575;
+	border: none;
+	color: white;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.sostfiltercheck {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: rem(20);
+}
+.condition-buttons {
+	display: flex;
+	gap: rem(10);
+	flex-wrap: wrap;
+}
+
+.condition-btn {
+	padding: rem(10) rem(16);
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+	border-radius: rem(5);
+	cursor: pointer;
+	font-size: rem(14);
+	transition:
+		background 0.3s,
+		border 0.3s;
+
 	&:hover {
-	  background: darken(#dc3545, 10%);
+		background: #ffecb3;
+		border-color: #ffbf00;
 	}
-  }
+
+	&.active {
+		background: #ffbf00;
+		color: white;
+		border-color: #ffbf00;
+	}
+}
+.labelas {
+	color: #000;
+	font-family: 'Unbounded';
+	font-size: rem(18);
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin-bottom: rem(15);
+}

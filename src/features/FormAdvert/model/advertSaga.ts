@@ -5,7 +5,7 @@ import {call , put, takeLatest } from 'redux-saga/effects'
 import { Pidorok } from "../../editContainer/type/editType";
 
 
-function* getAdvert(action: PayloadAction<string>){
+function* getAdvert(action: PayloadAction<string>): Generator{
     try{
         const response: Pidorok = yield call(getEditContainer, action.payload)
         yield put(AdvertActions.setSuccses(response)) 

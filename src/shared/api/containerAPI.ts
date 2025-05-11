@@ -1,4 +1,3 @@
-import axios from "axios";
 import { rootAxios } from "./rootAxios";
 
 export const myContainer =async () => { 
@@ -14,6 +13,6 @@ export const deleteContainer =async (data: number) =>{
 }
 
 export const AllContainer = async () => {
-	const response = await axios.get(`${import.meta.env.VITE_API_URL}/tools`)
+	const response = await rootAxios.get(`/tools`)
 	return response.data.content
 }

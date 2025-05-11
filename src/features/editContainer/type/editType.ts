@@ -4,6 +4,8 @@ export interface Pidorok {
 	price: string;
 	owner:{
 		firstname: string;
+		loginOwner: string;
+		loginRequester: string;
 	}
 	category: {
 		id: string;

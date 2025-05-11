@@ -8,8 +8,7 @@ import { history } from '../../../app/providers/history.ts';
 
 function* handleSubmitForm(action: PayloadAction<register>): Generator {
 	try {
-		const response = yield call(submitRegister, action.payload);
-		yield put(RegisterActions.setSuccess(response));
+		yield call(submitRegister, action.payload);
 		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error) {

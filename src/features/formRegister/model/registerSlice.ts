@@ -1,17 +1,10 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { register } from '../type/registerType';
 
-const initialState ={
-	response: null
-}
 const registerSlice = createSlice({
 	name: 'form',
-	initialState,
-	reducers: {
-		setSuccess: (state, action) => {
-			state.response = action.payload;
-		},
-	}
+	initialState: {},
+	reducers: {}
 });
 
 export const RegisterActions = { 

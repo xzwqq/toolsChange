@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import Spinner from '../widgets/spinner/Spinner.tsx';
 import { RootState } from './store/store.ts';
 import { history } from './providers/history.ts';
-
 const Home = React.lazy(() => import('../pages/Home/index.ts'));
 const ToolsSend = React.lazy(() => import('../pages/ToolsSend/index.ts'));
 const Login = React.lazy(() => import('../pages/Login/index.ts'));

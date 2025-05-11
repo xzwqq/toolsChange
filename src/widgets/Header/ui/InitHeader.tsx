@@ -8,11 +8,11 @@ const InitHeader: React.FC = () => {
         return(
             <>
                 <div className="header_promo">
-                    <img src="../../../../public/svgImage/homebut.svg" alt="profile" onClick={()=> history.push('/')} className="svg_icon" />
+                    <button className="non-button" onClick={()=> history.push('/')}><img src="../../../../public/svgImage/homebut.svg" alt="profile" className="svg_icon" /></button>
                     <div className="asd">
-                        <img src="../../../../public/svgImage/basil_chat-solid.svg" alt="chat" className="svg_like" />
-                        <img src="../../../../public/svgImage/mdi_bell.svg" alt="bell" className="svg_telega" />
-                        <img src="../../../../public/svgImage/iconprofile.svg" alt="profile" onClick={()=> history.push('/my')} className="svg_icon" />
+                        <button className="non-button"><img src="../../../../public/svgImage/basil_chat-solid.svg" alt="chat" className="svg_like" /></button>
+                        <button className="non-button"><img src="../../../../public/svgImage/mdi_bell.svg" alt="bell" className="svg_telega" /></button>
+                        <button className="non-button" onClick={()=> history.push('/my')}><img src="../../../../public/svgImage/iconprofile.svg" alt="profile" className="svg_icon" /></button>
                         <button className="sendcontheader" onClick={()=> history.push('/toolsend')}>Разместить обьявление</button>
                     </div>
                 </div>
@@ -22,10 +22,11 @@ const InitHeader: React.FC = () => {
     }else{
         return (
             <>
-                <div className="header_soso">
+                <div className="header_promo">
+                    <button className="non-button" onClick={()=> history.push('/')}><img src="../../../../public/svgImage/homebut.svg" alt="profile" className="svg_icon" /></button>
                     <div className="asd">
-                        <img src="../../../../public/svgImage/basil_chat-solid.svg" alt="chat" className="svg_like" />
-                        <img src="../../../../public/svgImage/mdi_bell.svg" alt="bell" className="svg_telega" />
+                        <button className="non-button"><img src="../../../../public/svgImage/basil_chat-solid.svg" alt="chat" className="svg_like" /></button>
+                        <button className="non-button"><img src="../../../../public/svgImage/mdi_bell.svg" alt="bell" className="svg_telega" /></button>
                         <button className="registerheader" onClick={()=> history.push('/login')}>Вход и регистрация</button>
                         <button className="sendcontheader" onClick={()=> history.push('/login')}>Разместить обьявление</button>
                     </div>

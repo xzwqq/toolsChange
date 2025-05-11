@@ -1,17 +1,17 @@
 @use '../../../shared/styles/helpers/function.scss' as *;
 
 .root_container{
-	place-items: center;
+	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 
 .container {
-	display: flex;
+	display: grid;
 	align-items: center;
-	flex-wrap: wrap;
-	width: rem(1300);
-	margin: rem(10);
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: rem(20);
 	cursor: pointer;
 
 	&_item {
