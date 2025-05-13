@@ -1,1 +1,1 @@
-export * from "./ui/Notification.tsx"
+export { default } from "./ui/Notification.tsx"

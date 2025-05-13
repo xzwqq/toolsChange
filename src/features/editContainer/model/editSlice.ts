@@ -1,7 +1,6 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 import { Pidorok, PidorokSend } from "../type/editType";
 
-
 interface editState {
     container: Pidorok | null,
 }

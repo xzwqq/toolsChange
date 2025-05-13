@@ -28,8 +28,7 @@ function* sendEditContainer(action: PayloadAction<PidorokSend>): Generator {
 	const id = action.payload.id;
 	const data: FormData | PidorokFinish = makeCall(datas)
 	try {
-		const response = yield call(putEditContainer, data, id);
-		yield put(EditActions.setSuccses(response));
+		yield call(putEditContainer, data, id);
 		yield call([history, history.push], '/my')
 		yield put(HelperActions.setSucsses('Вы успешно изменили обьявление!'));
 	} catch (error) {

@@ -1,7 +1,12 @@
 import React from "react";
+import { NotificationForm } from "../../../features/notificationForm/index.ts"
 
-export const Notification: React.FC = () =>{
+const Notification: React.FC = () =>{
     return(
-        <></>
+        <>
+            <NotificationForm />
+        </>
     )
 }
+
+export default Notification

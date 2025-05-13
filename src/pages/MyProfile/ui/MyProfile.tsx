@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../../../features/container/index.ts';
-import { InitHeader } from '../../../widgets/Header/index.ts';
 import { RootState } from '../../../app/store/store.ts';
 import { history } from '../../../app/providers/history.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
@@ -27,7 +26,6 @@ const MyProfile: React.FC = () => {
 	};
 	return (
 		<>
-			<InitHeader />
 			<div className='root__my'>
 				<Container type={zalupa} />
 				<div className='myProfile'>

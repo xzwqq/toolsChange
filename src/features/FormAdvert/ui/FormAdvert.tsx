@@ -5,6 +5,7 @@ import { AdvertActions } from '../model/advertSlice';
 import { useParams } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import Spinner from '../../../widgets/spinner/Spinner';
 import './formadvert.scss';
 
 export const type = (cont: string) => {
@@ -44,7 +45,7 @@ const FormAdvert: React.FC = () => {
 	}
 
 	if (!container) {
-		return <div className='notFound'>Объявление не найдено</div>;
+		return <div className='notFound'><Spinner /></div>;
 	}
 
 	return (

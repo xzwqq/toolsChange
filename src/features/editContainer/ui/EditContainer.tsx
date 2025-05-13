@@ -74,8 +74,10 @@ const EditContainer = () => {
     if (id) {
       dispatch(EditActions.submitGetContainer(id));
     }
-    dispatch(ToolsSendActions.submitSelectC()); 
-    dispatch(ToolsSendActions.submitSelectM()); 
+    if(!toolSelecteC || !manufacturers){
+      dispatch(ToolsSendActions.submitSelectM());
+      dispatch(ToolsSendActions.submitSelectC());
+    }
   }, [id, dispatch]);
 
   return (

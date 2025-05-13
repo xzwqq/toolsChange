@@ -50,10 +50,12 @@ const Header: React.FC = () => {
 		});
 	};
 
-	useEffect(() => {
-		dispatch(ToolsSendActions.submitSelectM());
-		dispatch(ToolsSendActions.submitSelectC());
-	  }, []);
+useEffect(() => {
+	if(!toolSelecteC || !manufacturers){
+      dispatch(ToolsSendActions.submitSelectM());
+      dispatch(ToolsSendActions.submitSelectC());
+   }	
+}, []);
 
 	return (
 		<div className='header_body'>

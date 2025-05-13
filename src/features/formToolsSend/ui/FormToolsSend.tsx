@@ -49,8 +49,10 @@ const FormToolsSend: React.FC = () => {
 
 
   useEffect(() => {
-    dispatch(ToolsSendActions.submitSelectM());
-    dispatch(ToolsSendActions.submitSelectC());
+    if(!toolSelecteC || !manufacturers){
+      dispatch(ToolsSendActions.submitSelectM());
+      dispatch(ToolsSendActions.submitSelectC());
+    }
   }, [dispatch]);
 
   return (
