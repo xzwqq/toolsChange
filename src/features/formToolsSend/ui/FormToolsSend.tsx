@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToolsSendActions } from '../model/toolsSendSlice';
 import { RootState } from '../../../app/store/store';
-import './fornsend.scss';
 import { Tool } from '../type/toolsend.type';
+import  dwnldimage  from '../../../shared/svgImage/dwnldImage.svg'
+import './fornsend.scss';
 
 
 
@@ -125,7 +126,7 @@ const FormToolsSend: React.FC = () => {
               <div className="photo-pr">
                 <div className="file-upload">
                   <label className="file-input-label">
-                    <img src="/public/svgImage/dwnldImage.svg" alt="upload photo" className='send-photo' />
+                    <img src={dwnldimage} alt="upload photo" className='send-photo' />
                     <input
                       type="file"
                       accept="image/*"

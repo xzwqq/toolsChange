@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store/store';
 import { AdvertActions } from '../model/advertSlice';
@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import Spinner from '../../../widgets/spinner/Spinner';
+import profile from "../../..//shared/svgImage/MyProfile.svg"
+import FormSendTrade from './FormSendTrade';
 import './formadvert.scss';
 
 export const type = (cont: string) => {
@@ -28,6 +30,7 @@ export const type = (cont: string) => {
 
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
+	const [isVisible, setVisible] = useState(false);
 	const dispatch = useDispatch();
 	const container = useSelector((state: RootState) => state.advert.container);
 
@@ -39,7 +42,7 @@ const FormAdvert: React.FC = () => {
 	const whois = () => {
 		if(container?.owner.loginOwner !== container?.owner.loginRequester){
 			return(
-				<button className='advert_button'>Откликнуться</button>
+				<button onClick={() => setVisible(!isVisible)} className='advert_button'>Откликнуться</button>
 			)
 		}
 	}
@@ -96,9 +99,12 @@ const FormAdvert: React.FC = () => {
 				<div className='advert_main_info'>
 					<h3 className='advert_price'>{container.price}₽</h3>
 					{whois()}
+					{isVisible && id && (
+					<FormSendTrade type={container.type} id={id} />
+					)}
 					<div className='advert_main_info_owner'>
 						<p className='advert_owner'>{container.owner.firstname}</p>
-						<img src='/public/svgImage/MyProfile.svg' alt='' />
+						<img src={profile} alt='' />
 					</div>
 				</div>
 			</div>

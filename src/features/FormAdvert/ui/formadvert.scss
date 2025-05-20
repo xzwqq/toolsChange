@@ -3,6 +3,8 @@
 .advert {
 	margin-top: rem(100);
 	flex-direction: column;
+	position: relative;
+	z-index: 1;
 	&_name {
 		color: #000;
 		font-family: 'Unbounded';
@@ -62,7 +64,7 @@
 		font-style: normal;
 		font-weight: 500;
 		line-height: normal;
-        margin-top: rem(90);
+		margin-top: rem(90);
 	}
 	&_sale {
 		color: #000;
@@ -71,7 +73,7 @@
 		font-style: normal;
 		font-weight: 300;
 		line-height: normal;
-        margin-top: rem(20);
+		margin-top: rem(20);
 	}
 	&_main {
 		display: flex;
@@ -105,13 +107,12 @@
 	color: rgba(255, 191, 0, 1);
 }
 
-
-.ends{
-    margin-bottom: rem(40);
+.ends {
+	margin-bottom: rem(40);
 }
 
-.notFound{
-	font-family: "Unbounded";
+.notFound {
+	font-family: 'Unbounded';
 	display: flex;
 	justify-content: center;
 	position: relative;

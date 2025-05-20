@@ -1,0 +1,53 @@
+@use '../../../shared/styles/helpers/function.scss' as *;
+
+.form_trades {
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+   margin-bottom: rem(40);
+   margin-top: rem(-20);
+}
+
+.formTrade {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border-radius: rem(10);
+	border: none;
+	background-color: #ffbf00;
+	width: rem(290);
+	padding: rem(20);
+}
+.trades {
+	display: flex;
+	flex-direction: column;
+}
+.trade-input {
+	background: white !important;
+	font-family: 'Unbounded';
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: rem(15);
+	border-radius: rem(7);
+	width: rem(230);
+	height: rem(50);
+	border: none;
+}
+.trade-button {
+	border-radius: rem(8);
+	background: #ffffff;
+	border-color: transparent;
+	width: rem(230);
+	height: rem(50);
+	color: #ffbf00;
+	font-family: 'Unbounded';
+	font-size: rem(15);
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

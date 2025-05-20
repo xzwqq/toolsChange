@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { LoginActions } from '../model/loginSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { history } from '../../../app/providers/history.js';
 import {form} from '../type/loginType.ts'
+import jam from '../../../shared/svgImage/jam_google.svg'
+import axios from 'axios';
 
 const FormLogin = () => {
 	const location = useLocation();
@@ -90,7 +91,7 @@ const FormLogin = () => {
 				<div className='after-form'>
 					<div className='google-form'>
 						<p className='google-text'>Или продолжить через:</p>
-						<img src='../../../../public/svgImage/jam_google.svg' className='logo_google' alt='google-auth' onClick={loginGoogleLogin}/>
+						<img src={jam} className='logo_google' alt='google-auth' onClick={loginGoogleLogin}/>
 					</div>
 					<div className='google-form'>
 						<p className='google-text'>Нету аккаунта?</p>

@@ -2,24 +2,36 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ContainerActions } from '../model/containerSlice.ts';
 import { RootState } from '../../../app/store/store.ts';
-import './containerStyle.scss'
 import { Link } from 'react-router-dom';
 import { content } from '../type/container_type.ts';
 import { history } from '../../../app/providers/history.ts';
+import editcont from "../../../shared/svgImage/editcontainer.svg"
+import subway from '../../../shared/svgImage/subway_delete.svg'
+import Spinner from '../../../widgets/spinner/Spinner.tsx';
+import './containerStyle.scss'
 
 const Container = ({type}: { type: string }) => {
 	const container = useSelector((state: RootState) => state.container.container);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		dispatch(ContainerActions.reset())
 		if (type === 'my') {
 			dispatch(ContainerActions.submitMyContainer());
 		} else {
 			dispatch(ContainerActions.submitAllContainer());
 		}
-	}, [dispatch, type]);
+	}, []);
 
-	
+	if(!container.length){
+		console.log(container)
+		return(
+			<>
+			<Spinner/>
+			</>
+		)
+	}
+
 
 	if (type === 'my') {
 		return(
@@ -35,8 +47,8 @@ const Container = ({type}: { type: string }) => {
 					</div>
 					<div className="my_button">
 						<button onClick={() => history.push(`/advert/${content.id}`)} className='my_button_discription'>Подробности</button>
-						<Link className='my_button_edit' to={`/edit/${content.id}`}><img src="../../../../public/svgImage/editcontainer.svg" alt="edit" className='my_edit' /></Link>
-						<button className='my_button_delete' onClick={() => dispatch(ContainerActions.submitDeleteMyContainer({ id: content.id }))}><img src='../../../../public/svgImage/subway_delete.svg' alt='delete' className='my_delete'/></button>
+						<Link className='my_button_edit' to={`/edit/${content.id}`}><img src={editcont} alt="edit" className='my_edit' /></Link>
+						<button className='my_button_delete' onClick={() => dispatch(ContainerActions.submitDeleteMyContainer({ id: content.id }))}><img src={subway} alt='delete' className='my_delete'/></button>
 					</div>
 					</div>
 				</div>
@@ -61,8 +73,6 @@ const Container = ({type}: { type: string }) => {
 		</div>
 	)
 }
-
-
 };
 
 export default Container;

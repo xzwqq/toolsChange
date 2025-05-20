@@ -7,6 +7,7 @@ import { watchEdit } from '../../features/editContainer/index.ts';
 import {watchHeader} from '../../widgets/Header/index.ts';
 import { watchRating } from '../../features/formRating/index.ts';
 import { watchAdvert } from '../../features/FormAdvert/index.ts';
+import { wathNotif } from '../../features/notificationForm/index.ts';
 
 export default function* rootSaga() {
     yield all([
@@ -18,5 +19,6 @@ export default function* rootSaga() {
         watchEdit(),
         watchRating(),
         watchAdvert(),
+        wathNotif(),
     ]);
 }

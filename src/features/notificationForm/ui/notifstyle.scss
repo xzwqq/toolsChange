@@ -1,0 +1,14 @@
+@use '../../../shared/styles/helpers/function.scss' as *;
+
+.root-notif{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.block-notif{
+   display: flex;
+   border: none;
+   border-radius: rem(6);
+   align-items: center;
+}

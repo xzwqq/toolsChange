@@ -1,4 +1,5 @@
 import { PidorokFinish } from '../../features/editContainer/type/editType.js'
+import { StateBuy } from '../../features/FormAdvert/type/form.advert.type.js'
 import {rootAxios} from './rootAxios.js'
 
 export const getEditContainer = async (id: string) =>{
@@ -14,4 +15,11 @@ export const putEditContainer = async (data: FormData | PidorokFinish, id: strin
 		}
 	})
     return response.data
+}
+
+export const postBuyTools = async (data: StateBuy) => {
+    await rootAxios.post(`/deals/purchase`, data)
+}
+export const postRent = async (data: StateBuy) => {
+    await rootAxios.post(`/deals/rental`, data)
 }

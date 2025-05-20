@@ -47,7 +47,6 @@ function App() {
 						{Object.values(routes).map((route) => (
 							<Route key={route.path} {...route} />
 						))}
-						<Route path="*"/>
 					</Routes>
 				</Suspense>
 			</HistoryRouter>

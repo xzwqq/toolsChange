@@ -5,6 +5,7 @@ import { EditActions } from "../model/editSlice.js";
 import { ToolsSendActions } from '../../formToolsSend/model/toolsSendSlice.ts';
 import { RootState } from "../../../app/store/store.ts";
 import { PidorokSend, formPenis } from "../type/editType.ts";
+import dwnld from '../../../shared/svgImage/dwnldImage.svg'
 import './editcontainer.scss'
 
 const EditContainer = () => {
@@ -146,7 +147,7 @@ const EditContainer = () => {
             <div className="photo-pr">
               <div className="file-upload">
                 <label className="file-input-label">
-                  <img src="/public/svgImage/dwnldImage.svg" alt="upload photo" className='send-photo' />
+                  <img src={dwnld} alt="upload photo" className='send-photo' />
                   <input
                     type="file"
                     accept="image/*"

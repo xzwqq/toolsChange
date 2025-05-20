@@ -11,6 +11,7 @@ const containerSlice = createSlice({
         setSuccses: (state, action) =>{
             state.container = action.payload
         },
+        reset: () => initialState,
     }
 })
 

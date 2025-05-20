@@ -4,6 +4,7 @@ import { Container } from '../../../features/container/index.ts';
 import { RootState } from '../../../app/store/store.ts';
 import { history } from '../../../app/providers/history.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
+import iconProfile from '../../../shared/svgImage/MyProfile.svg'
 import './myprofile.scss';
 
 interface content {
@@ -30,7 +31,7 @@ const MyProfile: React.FC = () => {
 				<Container type={zalupa} />
 				<div className='myProfile'>
 					<img
-						src='../../../public/svgImage/MyProfile.svg'
+						src={iconProfile}
 						alt='myProfile'
 						className='myProfile_img'
 					/>

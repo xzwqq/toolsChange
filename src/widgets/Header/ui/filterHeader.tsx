@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HeaderActions } from '../model/headerSlice';
 import { ToolsSendActions } from '../../../features/formToolsSend/model/toolsSendSlice';
 import { RootState } from '../../../app/store/store';
-import './header.scss';
 import { HelperActions } from '../../../utils/helper/helperSlice';
+import idc from '../../../shared/svgImage/idc.svg'
+import './header.scss';
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
@@ -51,10 +52,8 @@ const Header: React.FC = () => {
 	};
 
 useEffect(() => {
-	if(!toolSelecteC || !manufacturers){
       dispatch(ToolsSendActions.submitSelectM());
       dispatch(ToolsSendActions.submitSelectC());
-   }	
 }, []);
 
 	return (
@@ -64,7 +63,7 @@ useEffect(() => {
 				onClick={() => setFiltersVisible(!isFiltersVisible)}
 			>
 				<img
-					src='../../../../public/svgImage/idc.svg'
+					src={idc}
 					alt='filter'
 					className='svg_idc'
 				/>

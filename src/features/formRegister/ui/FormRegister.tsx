@@ -3,8 +3,9 @@ import { useEffect, useState, useRef } from 'react';
 import { RegisterActions } from '../model/registerSlice.ts';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { history } from '../../../app/providers/history.js';
-import axios from 'axios';
 import { register } from '../type/registerType.ts';
+import jam from '../../../shared/svgImage/jam_google.svg'
+import axios from 'axios';
 
 const FormRegister = () => {
 	const location = useLocation();
@@ -117,7 +118,7 @@ const FormRegister = () => {
 					<div className='google-form'>
 						<p className='google-text'>Или продолжить через:</p>
 						<img
-							src='../../../../public/svgImage/jam_google.svg'
+							src={jam}
 							className='logo_google'
 							alt='google-auth'
 							onClick={loginGoogleLogin}
