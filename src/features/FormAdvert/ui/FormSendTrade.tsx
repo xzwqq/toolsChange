@@ -27,6 +27,7 @@ const FormSendTrade: React.FC<FormSendTradeProps> = ({type , id}: {type: string;
 		}else{
 			dispatch(AdvertActions.postRentTool(buy))
 		}
+		dispatch(AdvertActions.setVisible(false))
    }
 
 if(type === 'SALE'){

@@ -1,13 +1,14 @@
 import { createSlice, createAction } from "@reduxjs/toolkit"
 import { Pidorok } from "../../editContainer/type/editType";
-import { StateBuy } from "../type/form.advert.type";
 
 interface editState {
-    container: Pidorok | null,
+    container: Pidorok | null;
+    visible: boolean;
 }
 
 const initialState: editState ={
     container: null,
+    visible: false,
 }
 const advertSlice = createSlice({
     name: 'advert',
@@ -15,6 +16,9 @@ const advertSlice = createSlice({
     reducers: {
         setSuccses: (state, action) =>{
             state.container = action.payload
+        },
+        setVisible: (state, action) => {
+            state.visible = action.payload
         }
     }
 })

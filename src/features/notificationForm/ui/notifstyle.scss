@@ -1,14 +1,82 @@
 @use '../../../shared/styles/helpers/function.scss' as *;
 
-.root-notif{
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   align-items: center;
+.root-notif {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-top: rem(10);
+	gap: rem(10);
 }
-.block-notif{
-   display: flex;
-   border: none;
-   border-radius: rem(6);
-   align-items: center;
+.block-notif {
+	display: flex;
+	border: none;
+	border-radius: rem(8);
+	align-items: center;
+	background-color: #ffbf00;
+	padding: rem(20);
+	justify-content: space-evenly;
+}
+.info-notif {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-right: rem(20);
+}
+.info-img {
+	width: rem(120);
+	height: rem(120);
+	border-radius: rem(6);
+	border: none;
+}
+.info-init-tool {
+	margin-left: rem(10);
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+}
+.info-tool {
+	display: flex;
+	flex-direction: row;
+	gap: rem(10);
+}
+.info-p-tool {
+	font-family: 'Unbounded';
+	color: white;
+}
+.req-info {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+	align-items: center;
+}
+.info-acc {
+	display: flex;
+	flex-direction: column;
+	gap: rem(20);
+	margin-left: rem(20);
+}
+.info-acc-but {
+	align-self: center;
+	border: none;
+	border-radius: rem(7);
+	background: green;
+	width: rem(50);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: rem(50);
+}
+.sitx {
+	background-color: red !important;
+}
+.border-nah {
+	border: none;
+	background: transparent;
+}
+.p-green {
+	color: green !important;
+}
+.p-red {
+	color: red !important;
 }

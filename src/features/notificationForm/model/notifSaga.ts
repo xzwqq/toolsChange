@@ -18,6 +18,7 @@ function* acceptNotification(action: PayloadAction<notifDealtype>): Generator {
 	try {
 		yield call(choosenotif, action.payload);
 		yield put(HelperActions.setSucsses('Успешно!'));
+		yield call(getnotification)
 	} catch (error) {
 		console.log(error);
 	}

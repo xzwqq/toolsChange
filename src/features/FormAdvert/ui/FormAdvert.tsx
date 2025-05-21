@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store/store';
 import { AdvertActions } from '../model/advertSlice';
@@ -30,9 +30,9 @@ export const type = (cont: string) => {
 
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
-	const [isVisible, setVisible] = useState(false);
 	const dispatch = useDispatch();
 	const container = useSelector((state: RootState) => state.advert.container);
+	const isVisible = useSelector((state: RootState) => state.advert.visible);
 
 	useEffect(() => {
 		dispatch(AdvertActions.submitAdvert(id));
@@ -42,7 +42,7 @@ const FormAdvert: React.FC = () => {
 	const whois = () => {
 		if(container?.owner.loginOwner !== container?.owner.loginRequester){
 			return(
-				<button onClick={() => setVisible(!isVisible)} className='advert_button'>Откликнуться</button>
+				<button onClick={() => dispatch(AdvertActions.setVisible(!isVisible))} className='advert_button'>Откликнуться</button>
 			)
 		}
 	}

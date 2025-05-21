@@ -18,7 +18,7 @@ function* getAdvert(action: PayloadAction<string>): Generator{
 function* postBuy(action: PayloadAction<StateBuy> ): Generator{
     try{
         yield call(postBuyTools, action.payload)
-        HelperActions.setSucsses('Вы успешно откликнулись!')
+        yield put(HelperActions.setSucsses('Вы успешно откликнулись!'))
     }catch(error){
         console.log(error)
     }
@@ -26,7 +26,7 @@ function* postBuy(action: PayloadAction<StateBuy> ): Generator{
 function* postRentTools(action: PayloadAction<StateBuy> ): Generator{
     try{
         yield call(postRent, action.payload)
-        HelperActions.setSucsses('Вы успешно откликнулись!')
+        yield put(HelperActions.setSucsses('Вы успешно откликнулись!'))
     }catch(error){
         console.log(error)
     }
