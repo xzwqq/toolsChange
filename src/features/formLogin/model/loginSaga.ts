@@ -21,7 +21,6 @@ function* handleSubmitForm(action: PayloadAction<form>): Generator {
 				yield put(HelperActions.setErrorNetwork('мага забыл пароль что-ли да'));
 			}
 		}
-		yield put(HelperActions.setErrorNetwork('Сервак помер ;('));
 	}
 }
 

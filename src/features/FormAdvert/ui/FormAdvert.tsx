@@ -48,7 +48,7 @@ const FormAdvert: React.FC = () => {
 	}
 
 	if (!container) {
-		return <div className='notFound'><Spinner /></div>;
+		return <Spinner />
 	}
 
 	return (

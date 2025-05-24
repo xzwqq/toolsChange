@@ -14,8 +14,7 @@ const ratingSlice = createSlice({
     }
 })
 const submitRating = createAction(
-    `${ratingSlice.name}/submitRating`,
-    (data) => ({ payload: data })
+    `${ratingSlice.name}/submitRating`
 );
 
 export const RatingActions = {

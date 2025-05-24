@@ -17,13 +17,15 @@ function App() {
 	const sucsses = useSelector((state: RootState) => state.helper.sucsses);
 
 	useEffect(() => {
-		if (error) {
-			toast.error(`${error}`);
-		}
 		if (sucsses) {
 			toast(`${sucsses}`);
 		}
-	}, [error, sucsses]);
+	}, [sucsses]);
+	useEffect(() => {
+		if (error) {
+			toast.error(`${error}`);
+		}
+	}, [error]);
 
 	return (
 		<>
@@ -44,8 +46,8 @@ function App() {
 			<HistoryRouter history={history}>
 				<Suspense fallback={<Spinner />}>
 					<Routes>
-						{Object.values(routes).map((route) => (
-							<Route key={route.path} {...route} />
+						{Object.values(routes).map((route, index) => (
+							<Route key={index} {...route} />
 						))}
 					</Routes>
 				</Suspense>

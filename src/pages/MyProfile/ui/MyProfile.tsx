@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../../../features/container/index.ts';
 import { RootState } from '../../../app/store/store.ts';
@@ -6,6 +6,7 @@ import { history } from '../../../app/providers/history.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import iconProfile from '../../../shared/svgImage/MyProfile.svg'
 import './myprofile.scss';
+import { FormRating } from '../../../features/formRating/index.ts';
 
 interface content {
 	owner: {
@@ -15,6 +16,7 @@ interface content {
 }
 const MyProfile: React.FC = () => {
 	const dispatch = useDispatch();
+	const [status, setStatus] =useState(true)
 	const zalupa = 'my';
 	const container: content = useSelector(
 		(state: RootState) => state.container.container[0]
@@ -28,7 +30,7 @@ const MyProfile: React.FC = () => {
 	return (
 		<>
 			<div className='root__my'>
-				<Container type={zalupa} />
+				{status ? <Container type={zalupa} /> : <FormRating/>}
 				<div className='myProfile'>
 					<img
 						src={iconProfile}
@@ -36,14 +38,13 @@ const MyProfile: React.FC = () => {
 						className='myProfile_img'
 					/>
 					<p className='myProfile_name'>{container?.owner.firstname}</p>
-					<button className='myProfile_button'>Мои заказы</button>
+					<button onClick={() => setStatus(true)} className='myProfile_button'>Обьявления</button>
 					<button
-						onClick={() => history.push(`/rating/${container?.owner.id}`)}
+						onClick={() => setStatus(false)}
 						className='myProfile_button'
 					>
 						Отзывы
 					</button>
-					<button className='myProfile_button'>Обьявления</button>
 					<button
 						className='myProfile_button red'
 						onClick={() => removetoken()}

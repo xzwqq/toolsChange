@@ -1,12 +1,12 @@
-import { PayloadAction } from "@reduxjs/toolkit"
+
 import { call, put, takeLatest } from "redux-saga/effects"
 import { getRating } from "../../../shared/api/ratingApi"
 import { RatingActions } from "./ratingSlice"
 
 
-function* getAllRating(action: PayloadAction<string>): Generator {
+function* getAllRating(): Generator {
     try{
-        yield call(getRating, action.payload) 
+        yield call(getRating) 
         yield put(RatingActions.setSuccses(''))
     }catch(error){
         console.log(error)

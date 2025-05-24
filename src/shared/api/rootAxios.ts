@@ -1,6 +1,7 @@
 import axios from "axios";
 import { history } from "../../app/providers/history";
 import { HelperActions } from "../../utils/helper/helperSlice";
+import store from '../../app/store/store'
 
 
 export const rootAxios = axios.create({
@@ -25,10 +26,11 @@ rootAxios.interceptors.request.use(
   rootAxios.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (error.response?.status === 401) {
+      const token = localStorage.getItem('token');
+      if (error.response?.status === 401 && token) {
         localStorage.removeItem('token');
         history.push('/login')
-        HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста')
+        store.dispatch(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'))
       }
       return Promise.reject(error);
     }

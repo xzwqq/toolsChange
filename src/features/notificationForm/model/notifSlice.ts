@@ -1,5 +1,5 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
-import { notifDealtype } from '../type/notif.type';
+import { notifDealtype, ratingType } from '../type/notif.type';
 
 const initialState = {
 	response: []
@@ -14,16 +14,21 @@ const notifSlice = createSlice({
 	}
 });
 
-const submitNotif = createAction(`${notifSlice.name}/submitNotif`);
+const submitNotif = createAction(`${notifSlice.name}/submitNotif`, (data : string) => ({payload: data}) );
 const acceptNotif = createAction(
 	`${notifSlice.name}/acceptNotif`,
 	(data: notifDealtype) => ({ payload: data })
+);
+const sendRatingSags = createAction(
+	`${notifSlice.name}/sendRatingSags`,
+	(data: ratingType ) => ({ payload: data })
 );
 
 export const NotifAction = {
 	...notifSlice.actions,
 	submitNotif,
-	acceptNotif
+	acceptNotif,
+	sendRatingSags
 };
 
 export default notifSlice.reducer;

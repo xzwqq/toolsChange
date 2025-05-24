@@ -2,7 +2,7 @@ import { Container } from '../../../features/container/index.ts';
 import { Header } from '../../../widgets/Header/index.ts';
 
 const Home = () => {
-	const type = '';
+	const type = 'all';
 	return (
 		<div>
 			<Header />

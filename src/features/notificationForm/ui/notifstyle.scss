@@ -15,7 +15,12 @@
 	align-items: center;
 	background-color: #ffbf00;
 	padding: rem(20);
-	justify-content: space-evenly;
+	flex-direction: column;
+}
+.all-iongo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 .info-notif {
 	display: flex;
@@ -43,6 +48,7 @@
 .info-p-tool {
 	font-family: 'Unbounded';
 	color: white;
+   text-align: center;
 }
 .req-info {
 	display: flex;
@@ -79,4 +85,66 @@
 }
 .p-red {
 	color: red !important;
+}
+.sendRating {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: rem(25);
+}
+.stars {
+	display: flex;
+	gap: rem(10);
+	align-items: center;
+	flex-direction: row;
+}
+.sendbuttonratting {
+	border: none;
+	background-color: #fff;
+	padding: rem(15);
+	border-radius: rem(7);
+}
+.inputRatingsend {
+	border: none;
+	border-radius: rem(6);
+	padding: rem(14);
+}
+.star {
+	border: none;
+	background: transparent;
+	padding: rem(10);
+}
+.starsvg {
+	width: rem(30);
+}
+.okstars {
+	background-color: #ffffff;
+	border-radius: rem(10);
+	padding: rem(10);
+}
+.otziv-h2{
+   color: #fff;
+   font-family: 'Unbounded';
+   margin-bottom: rem(20);
+}
+.toggle-notif{
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	margin-top: rem(50);
+	margin-bottom: rem(30);
+}
+.button-toogle-notif{
+	border: none;
+	font-family: 'Unbounded';
+	font-size: rem(20);
+	text-decoration: underline;
+	background-color: transparent;
+}
+.notif-root{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }

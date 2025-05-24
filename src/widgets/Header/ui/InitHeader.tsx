@@ -29,7 +29,7 @@ const InitHeader: React.FC = () => {
                     <div className="asd">
                         <button className="non-button" onClick={()=> history.push('/notification')}><img src={bell} alt="bell" className="svg_telega" /></button>
                         <button className="registerheader" onClick={()=> history.push('/login')}>Вход и регистрация</button>
-                        <button className="sendcontheader" onClick={()=> history.push('/login')}>Разместить обьявление</button>
+                        <button className="sendcontheader" onClick={()=> history.push('/registration')}>Разместить обьявление</button>
                     </div>
                 </div>
                 

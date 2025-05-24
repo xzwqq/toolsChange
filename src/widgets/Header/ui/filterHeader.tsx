@@ -195,6 +195,13 @@ useEffect(() => {
 							>
 								Сбросить фильтры
 							</button>
+							<button
+								type='button'
+								className='posik-btn'
+								onClick={postFilter}
+							>
+								Поиск
+							</button>
 						</div>
 					</div>
 				</div>

@@ -47,3 +47,9 @@ export interface notifDealtype {
 	id: string;
 	type: string;
 }
+
+export interface ratingType {
+  dealId: number | string;
+  rating: number;
+  message: string;
+}

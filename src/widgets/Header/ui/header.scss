@@ -119,7 +119,8 @@
 	height: rem(40);
 }
 .inputforHeader {
-	border-color: transparent;
+	border: none;
+	padding: rem(2);
 	width: rem(480);
 }
 
@@ -244,4 +245,11 @@
 	font-weight: 500;
 	line-height: normal;
 	margin-bottom: rem(15);
+}
+.posik-btn{
+	border-radius: 6px;
+	background: #ffbf00;
+	border: none;
+	color: white;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

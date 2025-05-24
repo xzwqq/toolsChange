@@ -1,7 +1,7 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
-    container: [],
+    container: [] ,
 }
 
 const containerSlice = createSlice({
@@ -9,6 +9,9 @@ const containerSlice = createSlice({
     initialState,
     reducers: {
         setSuccses: (state, action) =>{
+            if(!action.payload){
+                state.container = []
+            }
             state.container = action.payload
         },
         reset: () => initialState,
