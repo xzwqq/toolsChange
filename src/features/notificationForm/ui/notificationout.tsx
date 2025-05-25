@@ -6,6 +6,7 @@ import { notifresponse } from '../type/notif.type.ts';
 
 import { history } from '../../../app/providers/history.ts';
 import './notifstyle.scss';
+import { LoadingText } from '../../../widgets/spinner/DotSpinner.tsx';
 
 const statusNotif = ( status: string) => {
     if(status === 'PENDING'){
@@ -45,6 +46,7 @@ const statusNotif = ( status: string) => {
 
 export const Notificationout: React.FC = () => {
   const container = useSelector((state: RootState) => state.notif.response);
+  const status = useSelector((state: RootState) => state.notif.status);
   const dispatch = useDispatch();
 
 
@@ -52,11 +54,18 @@ export const Notificationout: React.FC = () => {
       dispatch(NotifAction.submitNotif('out'));
   }, []);
 
-  if(!container.length){
+if(status){
 		return(
-			<>
-				<h3 className='not-gound-conatn'>Здесь пока ничего нет...</h3>
-			</>
+			<div className='not-gound-conatn'>
+				<LoadingText />
+			</div>
+		)
+	}
+	if(!container.length){
+		return(
+			<div className='not-gound-conatn'>
+				<p className='not-gound-conatn-p'>Уведомлений еще нет</p>
+			</div>
 		)
 	}
   

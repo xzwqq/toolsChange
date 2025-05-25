@@ -8,10 +8,12 @@ import krest from '../../../shared/svgImage/krestik.svg'
 import { history } from '../../../app/providers/history.ts';
 import { NotivRating } from './notifRating.tsx';
 import './notifstyle.scss';
+import { LoadingText } from '../../../widgets/spinner/DotSpinner.tsx';
 
 
 export const Notificationin: React.FC = () => {
 	const container = useSelector((state: RootState) => state.notif.response);
+	const status = useSelector((state: RootState) => state.notif.status);
 	const dispatch = useDispatch();
 
   const answernotif = (id: string, type: string) => {
@@ -69,11 +71,18 @@ export const Notificationin: React.FC = () => {
     }
   }
 
-if(!container.length){
+if(status){
 		return(
-			<>
-				<h3 className='not-gound-conatn'>Здесь пока ничего нет...</h3>
-			</>
+			<div className='not-gound-conatn'>
+				<LoadingText />
+			</div>
+		)
+	}
+	if(!container.length){
+		return(
+			<div className='not-gound-conatn'>
+				<p className='not-gound-conatn-p'>Уведомлений еще нет</p>
+			</div>
 		)
 	}
 

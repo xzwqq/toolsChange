@@ -3,10 +3,12 @@ import { Pidorok, PidorokSend } from "../type/editType";
 
 interface editState {
     container: Pidorok | null,
+    isloading: boolean;
 }
 
 const initialState: editState ={
     container: null,
+    isloading: false
 }
 
 const editSlice = createSlice({
@@ -15,6 +17,10 @@ const editSlice = createSlice({
     reducers: {
         setSuccses: (state, action) =>{
             state.container = action.payload
+            state.isloading = false
+        },
+        setIsLoading: (state) =>{
+            state.isloading = true
         },
     }
 })

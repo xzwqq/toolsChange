@@ -2,6 +2,7 @@ import { createSlice, createAction } from "@reduxjs/toolkit"
 
 const initialState = {
     succses: [],
+    status: true,
 }
 
 const ratingSlice = createSlice({
@@ -10,7 +11,8 @@ const ratingSlice = createSlice({
     reducers:{
         setSuccses: (state, action) =>{
             state.succses = action.payload
-        }
+            state.status = false
+        },
     }
 })
 const submitRating = createAction(

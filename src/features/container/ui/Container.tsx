@@ -6,6 +6,7 @@ import { content } from '../type/container_type.ts';
 import './containerStyle.scss'
 import Mycontainer from './mycontainer.tsx';
 import Allscontainer from './Allcontainer.tsx';
+import { LoadingText } from '../../../widgets/spinner/DotSpinner.tsx';
 
 interface ContainerProps {
   type: 'my' | 'all';
@@ -13,6 +14,7 @@ interface ContainerProps {
 
 const Container = ({type}: ContainerProps) => {
 	const container: Array<content> = useSelector((state: RootState) => state.container.container);
+	const status: boolean = useSelector((state: RootState) => state.container.status);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -24,11 +26,18 @@ const Container = ({type}: ContainerProps) => {
 		}
 	}, []);
 
+	if(status){
+		return(
+			<div className='not-gound-conatn'>
+				<LoadingText />
+			</div>
+		)
+	}
 	if(!container.length){
 		return(
-			<>
-				<h3 className='not-gound-conatn'>Здесь пока ничего нет...</h3>
-			</>
+			<div className='not-gound-conatn'>
+				<p className='not-gound-conatn-p'>Обьявлений еще нет(</p>
+			</div>
 		)
 	}
 	return type === 'my' ? (

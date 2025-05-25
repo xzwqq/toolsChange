@@ -6,7 +6,8 @@ const initialState = {
 	selectM: [],
 	response: [],
 	container: [],
-	files: []
+	files: [],
+	isLoading: false,
 };
 
 const toolsSendSlice = createSlice({
@@ -15,6 +16,10 @@ const toolsSendSlice = createSlice({
 	reducers: {
 		setSuccess: (state, action) => {
 			state.response = action.payload;
+			state.isLoading = false
+		},
+		setIsloading: (state) => {
+			state.isLoading = true;
 		},
 		setSelectC: (state, action) => {
 			state.selectC = action.payload;

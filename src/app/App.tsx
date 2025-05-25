@@ -13,19 +13,21 @@ import { InitHeader } from '../widgets/Header/index.ts';
 import { routes } from './providers/route.tsx';
 
 function App() {
-	const error = useSelector((state: RootState) => state.helper.errorNetwork);
+	const numSuccses = useSelector((state: RootState) => state.helper.numSuccses);
+	const numError = useSelector((state: RootState) => state.helper.numError);
 	const sucsses = useSelector((state: RootState) => state.helper.sucsses);
+	const error = useSelector((state: RootState) => state.helper.errorNetwork);
 
 	useEffect(() => {
 		if (sucsses) {
 			toast(`${sucsses}`);
 		}
-	}, [sucsses]);
+	}, [numSuccses]);
 	useEffect(() => {
 		if (error) {
 			toast.error(`${error}`);
 		}
-	}, [error]);
+	}, [numError]);
 
 	return (
 		<>

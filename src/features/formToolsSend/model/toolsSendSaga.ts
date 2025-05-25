@@ -13,6 +13,7 @@ import { Tool } from '../type/toolsend.type';
 import { history } from '../../../app/providers/history';
 
 function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
+	yield put(ToolsSendActions.setIsloading())
 	try {
 		const files: File[] = yield select((state: RootState) => state.toolsSend.files);
 		const data = new FormData();
@@ -20,7 +21,6 @@ function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
 		for (let i = 0; i < files.length; i++) {
 			data.append('files', files[i]);
 		}
-
 		const response: any = yield call(sendTools, data);
 		yield put(ToolsSendActions.setSuccess(response));
     	yield call([history, history.push], '/my')

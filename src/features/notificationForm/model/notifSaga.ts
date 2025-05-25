@@ -15,7 +15,7 @@ import {
 
 function* getnotifications(): Generator {
 	try {
-		const response: notifresponse = yield call(getnotif, 'in');
+		const response: Array<notifresponse> = yield call(getnotif, 'in');
 		yield put(NotifAction.setSucsses(response));
 	} catch (error) {
 		console.log(error);
@@ -23,7 +23,10 @@ function* getnotifications(): Generator {
 }
 function* getnotification(action: PayloadAction<string>): Generator {
 	try {
-		const response: notifresponse = yield call(getnotif, action.payload);
+		const response: Array<notifresponse> = yield call(getnotif, action.payload);
+		if(!response.length){
+			
+		}
 		yield put(NotifAction.setSucsses(response));
 	} catch (error) {
 		console.log(error);

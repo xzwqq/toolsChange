@@ -4,15 +4,13 @@
 	place-items: center;
 	padding-top: rem(20);
 	position: absolute;
-	z-index: 1;
+	z-index: 3;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	opacity: 0.8;
-	background: #000;
-	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	background-color: rgba(0, 0, 0, 0.75);
 }
 .close-auth {
 	color: rgb(255, 252, 252);
@@ -43,6 +41,7 @@
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	max-width: rem(430);
 }
 .gmail-input {
 	border-radius: 7px;
@@ -66,17 +65,12 @@
 	margin-bottom: rem(45);
 	border-radius: rem(7);
 	background: #ffbf00;
-	border: transparent;
-	width: rem(80);
-	height: rem(40);
+	border: none;
+	width: auto;
 	color: #fff;
 	font-family: 'Unbounded';
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 400;
-	line-height: normal;
-	position: relative;
-	right: 10.4rem;
+	padding: rem(12);
+	align-self: baseline;
 }
 
 .after-form {
@@ -122,4 +116,10 @@
 }
 .gmail-input::placeholder {
 	padding-left: rem(10);
+}
+.form-login_root{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }

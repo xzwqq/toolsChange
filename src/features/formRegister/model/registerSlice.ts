@@ -1,10 +1,18 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { register } from '../type/registerType';
 
+const initialState = {
+		isLoading: false
+	}
 const registerSlice = createSlice({
 	name: 'form',
-	initialState: {},
-	reducers: {}
+	initialState,
+	reducers: {
+		setIsLoading: (state) => {
+			state.isLoading = true
+		},
+		reset: () => initialState 
+	}
 });
 
 export const RegisterActions = { 

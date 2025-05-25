@@ -6,12 +6,14 @@ import { RootState } from '../../../app/store/store';
 import { HelperActions } from '../../../utils/helper/helperSlice';
 import idc from '../../../shared/svgImage/idc.svg'
 import './header.scss';
+import { LoadingButton } from '../../loader/loader';
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
 	const toolSelecteC: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectC);
-  	const manufacturers: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectM);
-	const [isFiltersVisible, setFiltersVisible] = useState(false);
+	const isloading: boolean = useSelector((state: RootState) => state.header.isloading);
+	const isVisible: boolean = useSelector((state: RootState) => state.header.isVisible);
+  const manufacturers: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectM);
 	const [filters, setFilters] = useState({
 		category: '',
 		manufacturer: '',
@@ -25,9 +27,9 @@ const Header: React.FC = () => {
 	const postFilter = (e: React.FormEvent) => {
 		e.preventDefault();
 		if(filters.gte > filters.lte){
-			dispatch(HelperActions.setErrorNetwork('Введите корректный range цены'))
-		}else{
-			setFiltersVisible(false)
+			dispatch(HelperActions.setErrorNetwork('Введите корректный диапозон цены'))
+		}else{			
+			dispatch(HeaderActions.setIsLoading());
 			dispatch(HeaderActions.submitFilter(filters));
 		}
 	};
@@ -60,7 +62,7 @@ useEffect(() => {
 		<div className='header_body'>
 			<div
 				className='categ'
-				onClick={() => setFiltersVisible(!isFiltersVisible)}
+				onClick={() => dispatch(HeaderActions.setIsVisible(!isVisible))}
 			>
 				<img
 					src={idc}
@@ -81,13 +83,16 @@ useEffect(() => {
 					placeholder='Поиск...'
 				/>
 				<div className='filter-actions'>
-					<button type='submit' className='searchforheader'>
-						Поиск
-					</button>
+					<LoadingButton
+					isLoading={isloading}
+					type={'submit'}
+					className={'searchforheader'}
+					defaultText={'Поиск'}
+					/>
 				</div>
 			</form>
 
-			{isFiltersVisible && (
+			{isVisible && (
 				<div className='allFilter'>
 					<div className='filters-container'>
 						
@@ -195,13 +200,12 @@ useEffect(() => {
 							>
 								Сбросить фильтры
 							</button>
-							<button
-								type='button'
-								className='posik-btn'
-								onClick={postFilter}
-							>
-								Поиск
-							</button>
+							<LoadingButton
+							isLoading={isloading}
+							onClick={postFilter}
+							className={'posik-btn'}
+							defaultText={'Поиск'}
+							/>
 						</div>
 					</div>
 				</div>

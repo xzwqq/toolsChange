@@ -2,6 +2,7 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState ={
     container: [] ,
+    status: true
 }
 
 const containerSlice = createSlice({
@@ -9,10 +10,11 @@ const containerSlice = createSlice({
     initialState,
     reducers: {
         setSuccses: (state, action) =>{
-            if(!action.payload){
+            if(!action.payload.length) {
                 state.container = []
             }
             state.container = action.payload
+            state.status = false
         },
         reset: () => initialState,
     }

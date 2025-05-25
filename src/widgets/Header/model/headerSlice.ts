@@ -1,15 +1,34 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 const initialState = {
-	succses: null
+	isloading: false,
+	isVisible: false,
+	visiblelogin: false,
+	visibleRegister: false
 };
 
 const headerSlice = createSlice({
 	name: 'header',
 	initialState,
 	reducers: {
-		setSecces: (state, action) => {
-			state.succses = action.payload;
-		}
+		setSecces: (state) => {
+			state.isloading = false;
+			state.isVisible = false;
+		},
+		setIsLoading: (state) => {
+			state.isloading = true
+		},
+		setIsVisible: (state, action) => {
+			state.isVisible = action.payload
+		},
+		setVisibleLogin: (state, action) => {
+			state.visiblelogin = action.payload
+			state.visibleRegister = false 
+		},
+		setVisibleRegister: (state, action) => {
+			state.visibleRegister = action.payload
+			state.visiblelogin = false 
+		},
+
 	}
 });
 

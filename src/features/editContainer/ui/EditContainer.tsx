@@ -7,6 +7,7 @@ import { RootState } from "../../../app/store/store.ts";
 import { PidorokSend, formPenis } from "../type/editType.ts";
 import dwnld from '../../../shared/svgImage/dwnldImage.svg'
 import './editcontainer.scss'
+import { LoadingButton } from "../../../widgets/loader/loader.tsx";
 
 const EditContainer = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const EditContainer = () => {
 
   const toolSelecteC: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectC);
   const container = useSelector((state: RootState) => state.edit.container);
+  const isloading: boolean = useSelector((state: RootState) => state.edit.isloading);
   const manufacturers: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectM);
 
   const [deleteFile, setDeleteFile] = useState<string[]>([]); 
@@ -39,6 +41,7 @@ const EditContainer = () => {
       deleteFile,
       id,
     };
+    dispatch(EditActions.setIsLoading()); 
     dispatch(EditActions.submitMyContainer(data)); 
   };
 
@@ -223,10 +226,12 @@ const EditContainer = () => {
               min="0"
             />
           </div>
-
-          <button className='but-send' type='submit'>
-            Сохранить
-          </button>
+          <LoadingButton
+            isLoading={isloading}
+            defaultText={'Сохранить'}
+            type={'submit'}
+            className={'but-send'}
+          />
         </div>
       </form>
     </div>

@@ -2,15 +2,20 @@ import { createSlice, createAction } from '@reduxjs/toolkit';
 import { notifDealtype, ratingType } from '../type/notif.type';
 
 const initialState = {
-	response: []
+	response: [],
+	status: true,
 };
 const notifSlice = createSlice({
 	name: 'notif',
 	initialState,
 	reducers: {
-		setSucsses: (state, action) => {
-			state.response = action.payload;
-		}
+		setSucsses: (state, action) =>{
+            if(!action.payload.length) {
+                state.response = []
+            }
+            state.response = action.payload
+            state.status = false
+        },
 	}
 });
 

@@ -25,7 +25,8 @@ function* getContainerByFilter(action: PayloadAction<Object>) {
     const data = action.payload
     const dataPost = filterPost(data)    
     try{
-        const response:Pidorok = yield call(getContFilter, dataPost)
+        const response:Array<Pidorok> = yield call(getContFilter, dataPost)
+        yield put(HeaderActions.setSecces())
         yield put(ContainerActions.setSuccses(response))
     }catch(error){
         console.log(error)
