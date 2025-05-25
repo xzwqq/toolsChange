@@ -3,6 +3,7 @@ export interface Pidorok {
 	condition: string;
 	price: string;
 	owner:{
+		id: number | string;
 		firstname: string;
 		loginOwner: string;
 		loginRequester: string;
@@ -16,7 +17,7 @@ export interface Pidorok {
 		name: string;
 	}
 	description: string;
-	photos?: string[];
+	photos: string[];
 }
 
 export interface formPenis {

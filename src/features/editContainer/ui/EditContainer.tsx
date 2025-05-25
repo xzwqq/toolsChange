@@ -12,11 +12,12 @@ const EditContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const toolSelecteC: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectC || []);
+  const toolSelecteC: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectC);
   const container = useSelector((state: RootState) => state.edit.container);
-  const manufacturers: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectM || []);
+  const manufacturers: { id: string; name: string }[] = useSelector((state: RootState) => state.toolsSend.selectM);
 
   const [deleteFile, setDeleteFile] = useState<string[]>([]); 
+  const [newphotocont, setPfotocont] = useState<string[]>([]); 
   const [files, setFiles] = useState<File[]>([]); 
   const [formData, setFormData] = useState<formPenis>({
     type: '',
@@ -27,18 +28,7 @@ const EditContainer = () => {
     description: '',
   });
 
-  useEffect(() => {
-    if (container) {
-      setFormData({
-        type: container.type || '',
-        condition: container.condition || '',
-        price: container.price || '',
-        categoryId: container.category?.id || '', 
-        manufacturerId: container.manufacturer?.id || '', 
-        description: container.description || '',
-      });
-    }
-  }, [container]);
+  
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,14 +42,25 @@ const EditContainer = () => {
     dispatch(EditActions.submitMyContainer(data)); 
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(Array.from(e.target.files));
-    }
-  };
+ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     if (e.target.files) {
+       const newFiles = Array.from(e.target.files);
+       setFiles(prev => {
+         return [...prev, ...newFiles];
+       });
+     }
+   };
 
   const deleteSuck = (photo: string) => { 
     setDeleteFile(old => [...old, photo]);
+    const newsosiska = newphotocont?.map((el) => {
+      if(el !== photo){
+         return el
+        }else{
+          return ''
+        }
+    })
+    setPfotocont(newsosiska)
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -75,11 +76,25 @@ const EditContainer = () => {
     if (id) {
       dispatch(EditActions.submitGetContainer(id));
     }
-    if(!toolSelecteC || !manufacturers){
+    if(!toolSelecteC.length || !manufacturers.length){
       dispatch(ToolsSendActions.submitSelectM());
       dispatch(ToolsSendActions.submitSelectC());
     }
-  }, [id, dispatch]);
+  }, [id]);
+
+  useEffect(() => {
+    if (container) {
+      setFormData({
+        type: container.type || '',
+        condition: container.condition || '',
+        price: container.price || '',
+        categoryId: container.category?.id || '', 
+        manufacturerId: container.manufacturer?.id || '', 
+        description: container.description || '',
+      });
+      setPfotocont(container?.photos)
+    }
+  }, [container]);
 
   return (
     <div className='root-formsend'>
@@ -161,6 +176,7 @@ const EditContainer = () => {
               <div className="preview-image">
                 {files.map((file, index) => { 
                   const result = URL.createObjectURL(file);
+                  console.log(file)
                   return (
                     <img key={index} className='prev_img orig' src={result} alt="preview" />
                   );
@@ -168,14 +184,17 @@ const EditContainer = () => {
               </div>
             </div>
             <div className="editphoto">
-              {container?.photos?.map((photo, index) => (
-                <div key={index} className="editPhotos">
-                  <div className="dlt">
-                    <button type="button" onClick={() => deleteSuck(photo)} className="dlt_img">X</button>
-                  </div>
-                  <img src={photo} className="prev_img" alt={`фото ${index + 1}`} />
-                </div>
-              ))}
+              {newphotocont?.map((photo, index) => {
+                if(photo !== ''){
+                  return(
+                    <div key={index} className="editPhotos">
+                      <div className="dlt">
+                        <button type="button" onClick={() => deleteSuck(photo)} className="dlt_img">X</button>
+                      </div>
+                      <img src={photo} className="prev_img" alt={`фото ${index + 1}`} />
+                    </div>
+                    )
+              }})}
             </div>
           </div>
 

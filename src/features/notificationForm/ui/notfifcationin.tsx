@@ -6,8 +6,8 @@ import { notifresponse } from '../type/notif.type.ts';
 import accept from '../../../shared/svgImage/galka4.svg'
 import krest from '../../../shared/svgImage/krestik.svg'
 import { history } from '../../../app/providers/history.ts';
-import './notifstyle.scss';
 import { NotivRating } from './notifRating.tsx';
+import './notifstyle.scss';
 
 
 export const Notificationin: React.FC = () => {
@@ -31,15 +31,16 @@ export const Notificationin: React.FC = () => {
       return (
         <>
           <p className='info-p-tool'>Арендовать за {item?.price} ₽</p>
-          <p className='info-p-tool'>{item?.message}</p>
           <p className='info-p-tool'>от {item?.startDate}</p>
           <p className='info-p-tool'>до {item?.endDate}</p>
+          <p className='info-p-tool'>Сообщение:<br/>{item?.message}</p>
         </>
       )
     }else if(type === 'SALE'){
       return(
         <>
           <p className='info-p-tool'>Купить за {item?.price} ₽</p>
+          <p className='info-p-tool'>Сообщение:<br/>{item?.message}</p>
         </>
       )
     }
@@ -60,6 +61,10 @@ export const Notificationin: React.FC = () => {
     }else if(status === 'APPROVED') {
       return(
         <p className='info-p-tool'>Статус: <span className='info-p-tool p-green'>Одобрено</span></p>
+      )
+    }else if(status === 'ALLDONE') {
+      return(
+        <p className='info-p-tool'>Статус:<br/> <span className='info-p-tool p-green'>Сделка Завершилась</span></p>
       )
     }
   }

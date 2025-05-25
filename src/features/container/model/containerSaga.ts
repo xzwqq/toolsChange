@@ -30,6 +30,7 @@ function* deleteMyContainer(action: PayloadAction<{ id: number }>): Generator {
 	try {
 		yield call(deleteContainer, action.payload.id);
 		yield put(HelperActions.setSucsses('Вы успешно удалили обьявление!'));
+		yield call(getMyContainer)
 	} catch (err) {
 		console.log(err);
 		yield put(

@@ -8,8 +8,8 @@ export const NotificationForm: React.FC = () => {
   return (
     <div className='notif-root'>
         <div className='toggle-notif'>
-          <button onClick={() => setStatus(true)} className='button-toogle-notif'>Входящие/</button>
-          <button onClick={() => setStatus(false)} className='button-toogle-notif'>Исходящие</button>
+          <button onClick={() => setStatus(true)} className={`button-toogle-notif ${status && 'toggle-onfocus-sost'}`}>Входящие/</button>
+          <button onClick={() => setStatus(false)} className={`button-toogle-notif ${status ? '' : 'toggle-onfocus-sost'}`}>Исходящие</button>
         </div>
         {status ? <Notificationin/> : <Notificationout/>}
     </div>

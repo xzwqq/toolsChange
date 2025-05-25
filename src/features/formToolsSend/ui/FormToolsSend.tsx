@@ -38,8 +38,12 @@ const FormToolsSend: React.FC = () => {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(e.target.files || []);
-    setFiles(selectedFiles);
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles(prev => {
+        return [...prev, ...newFiles];
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLButtonElement> ) => {
@@ -50,7 +54,7 @@ const FormToolsSend: React.FC = () => {
 
 
   useEffect(() => {
-    if(!toolSelecteC || !manufacturers){
+    if(!toolSelecteC.length || !manufacturers.length){
       dispatch(ToolsSendActions.submitSelectM());
       dispatch(ToolsSendActions.submitSelectC());
     }
@@ -130,7 +134,7 @@ const FormToolsSend: React.FC = () => {
                     <input
                       type="file"
                       accept="image/*"
-                      multiple
+                      multiple                    
                       onChange={handleFileChange}
                       className="file-input"
                     />

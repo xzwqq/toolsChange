@@ -6,6 +6,10 @@ export const getEditContainer = async (id: string) =>{
     const response = await rootAxios.get(`/tools/${id}`)
     return response.data
 }
+export const getAverageRating = async (id: number | string) =>{
+    const response = await rootAxios.get(`/reviews/${id}/rating`)
+    return response.data
+}
 
 export const putEditContainer = async (data: FormData | PidorokFinish, id: string) =>{
     console.log(id)

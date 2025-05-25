@@ -51,6 +51,14 @@ export const Notificationout: React.FC = () => {
   useEffect(() => {
       dispatch(NotifAction.submitNotif('out'));
   }, []);
+
+  if(!container.length){
+		return(
+			<>
+				<h3 className='not-gound-conatn'>Здесь пока ничего нет...</h3>
+			</>
+		)
+	}
   
   return (
     <div className='root-notif'>

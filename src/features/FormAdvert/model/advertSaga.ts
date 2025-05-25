@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { getEditContainer, postBuyTools, postRent } from "../../../shared/api/editAPI";
+import { getAverageRating, getEditContainer, postBuyTools, postRent } from "../../../shared/api/editAPI";
 import { AdvertActions } from "./advertSlice";
 import {call , put, takeLatest } from 'redux-saga/effects'
 import { Pidorok } from "../../editContainer/type/editType";
@@ -11,10 +11,20 @@ function* getAdvert(action: PayloadAction<string>): Generator{
     try{
         const response: Pidorok = yield call(getEditContainer, action.payload)
         yield put(AdvertActions.setSuccses(response)) 
+        yield call(getAverageSaga, response.owner.id)
     }catch(error){
         console.log(error)
     }
 }
+function* getAverageSaga(action: number | string): Generator{
+    try{
+        const response: number | string = yield call(getAverageRating, action)
+        yield put(AdvertActions.setAverage(response))
+    }catch(error){
+        console.log(error)
+    }
+}
+
 function* postBuy(action: PayloadAction<StateBuy> ): Generator{
     try{
         yield call(postBuyTools, action.payload)

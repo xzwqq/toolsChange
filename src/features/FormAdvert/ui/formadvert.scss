@@ -55,7 +55,6 @@
 		font-style: normal;
 		font-weight: 500;
 		line-height: normal;
-		margin-right: rem(100);
 	}
 	&_type {
 		color: #000;
@@ -84,8 +83,9 @@
 			display: flex;
 			align-items: center;
 			&_owner {
-				display: flex;
-				flex-direction: row;
+				display: grid;
+				grid-template-rows: 1fr 1fr;
+				gap: rem(20);
 			}
 		}
 	}
@@ -118,6 +118,29 @@
 	position: relative;
 	top: rem(120);
 }
-.thumb{
-	width: rem(360);
+.starsvg {
+	width: ren(20);
+}
+.advert-info-owner-name {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+.advert_owner {
+	text-align: center;
+	margin-bottom: rem(10);
+}
+.star-advet-svg{
+	display: flex;
+	flex-direction: row;
+	background-color: #ffbf00;
+	border: none;
+	border-radius: rem(7);
+	padding: rem(10);
+	justify-content: center;
+}
+.grey-advert{
+	background-color: #6a6868 !important;
+	color: #ffbf00 !important;
 }

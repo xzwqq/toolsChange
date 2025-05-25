@@ -1,0 +1,41 @@
+@use '../../../shared/styles/helpers/function.scss' as *;
+
+.root-rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: rem(20);
+}
+.root_item_rating{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  padding: rem(10);
+  border: none;
+  border-radius: rem(7);
+  background-color: #ffbf00;
+  
+}
+.p_item_rating{
+  display: grid;
+  gap: rem(15);
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.p_rating{
+  color: aliceblue;
+  font-family: 'Unbounded';
+  text-align: center;
+}
+.rating_star_dev{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.star_item_rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

@@ -8,6 +8,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Spinner from '../../../widgets/spinner/Spinner';
 import profile from "../../..//shared/svgImage/MyProfile.svg"
 import FormSendTrade from './FormSendTrade';
+import star from '../../../shared/svgImage/fullStar.svg'
+import anstar from '../../../shared/svgImage/anlessStar.svg'
 import './formadvert.scss';
 
 export const type = (cont: string) => {
@@ -28,11 +30,23 @@ export const type = (cont: string) => {
 	}
 };
 
+
+
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const container = useSelector((state: RootState) => state.advert.container);
+	const rating = useSelector((state: RootState) => state.advert.average);
 	const isVisible = useSelector((state: RootState) => state.advert.visible);
+
+	const ratingstars = (idstar: number, rating: number) => {
+		console.log(rating)
+    if(idstar <= rating){
+      return star
+    }else{
+      return anstar
+    }
+  } 
 
 	useEffect(() => {
 		dispatch(AdvertActions.submitAdvert(id));
@@ -42,7 +56,7 @@ const FormAdvert: React.FC = () => {
 	const whois = () => {
 		if(container?.owner.loginOwner !== container?.owner.loginRequester){
 			return(
-				<button onClick={() => dispatch(AdvertActions.setVisible(!isVisible))} className='advert_button'>Откликнуться</button>
+				<button onClick={() => dispatch(AdvertActions.setVisible(!isVisible))} className={`advert_button ${isVisible ? 'grey-advert' : ''}`}>{isVisible ? "Свернуть" :"Откликнуться"}</button>
 			)
 		}
 	}
@@ -103,8 +117,20 @@ const FormAdvert: React.FC = () => {
 					<FormSendTrade type={container.type} id={id} />
 					)}
 					<div className='advert_main_info_owner'>
-						<p className='advert_owner'>{container.owner.firstname}</p>
-						<img src={profile} alt='' />
+						<div className="advert-info-owner-name">
+							<img src={profile} alt='' />
+							<p className='advert_owner'>{container.owner.firstname}</p>
+						</div>
+						<div className="star-advert">
+							<p className='advert_owner'>Средний рейтинг: {rating ? rating.toString().substring(0,1) : 0}</p>
+							<div className="star-advet-svg">
+								<img className='starsvg' src={ratingstars(1, rating)} alt="" />
+								<img className='starsvg' src={ratingstars(2, rating)} alt="" />
+								<img className='starsvg' src={ratingstars(3, rating)} alt="" />
+								<img className='starsvg' src={ratingstars(4, rating)} alt="" />
+								<img className='starsvg' src={ratingstars(5, rating)} alt="" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

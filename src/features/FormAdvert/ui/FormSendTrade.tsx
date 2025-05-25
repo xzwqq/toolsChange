@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './formsendTrade.scss'
 import { useDispatch } from 'react-redux';
 import { AdvertActions } from '../model/advertSlice';
 import { FormSendTradeProps } from '../type/form.advert.type.ts'
+import './formsendTrade.scss'
+import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 
 const FormSendTrade: React.FC<FormSendTradeProps> = ({type , id}: {type: string; id: string;}) => {
 	const dispatch = useDispatch()
@@ -22,6 +23,7 @@ const FormSendTrade: React.FC<FormSendTradeProps> = ({type , id}: {type: string;
 
    const sendTrade = (e: React.FormEvent) => {
       e.preventDefault();
+			if(buy.message === '') return dispatch(HelperActions.setErrorNetwork('Введите сообщение!'))
 		if(type === 'SALE'){
 			dispatch(AdvertActions.postBuyTool(buy))
 		}else{

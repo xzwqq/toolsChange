@@ -38,10 +38,10 @@ const MyProfile: React.FC = () => {
 						className='myProfile_img'
 					/>
 					<p className='myProfile_name'>{container?.owner.firstname}</p>
-					<button onClick={() => setStatus(true)} className='myProfile_button'>Обьявления</button>
+					<button onClick={() => setStatus(true)} className={`myProfile_button ${status? 'red': ''}`}>Обьявления</button>
 					<button
 						onClick={() => setStatus(false)}
-						className='myProfile_button'
+						className={`myProfile_button ${status? '': 'red'}`}
 					>
 						Отзывы
 					</button>

@@ -29,7 +29,6 @@ rootAxios.interceptors.request.use(
       const token = localStorage.getItem('token');
       if (error.response?.status === 401 && token) {
         localStorage.removeItem('token');
-        history.push('/login')
         store.dispatch(HelperActions.setErrorNetwork('Токен истек войдите снова пожалуйста'))
       }
       return Promise.reject(error);

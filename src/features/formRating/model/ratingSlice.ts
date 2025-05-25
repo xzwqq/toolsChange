@@ -1,7 +1,7 @@
 import { createSlice, createAction } from "@reduxjs/toolkit"
 
 const initialState = {
-    succses: null,
+    succses: [],
 }
 
 const ratingSlice = createSlice({
