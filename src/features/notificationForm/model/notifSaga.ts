@@ -24,9 +24,7 @@ function* getnotifications(): Generator {
 function* getnotification(action: PayloadAction<string>): Generator {
 	try {
 		const response: Array<notifresponse> = yield call(getnotif, action.payload);
-		if(!response.length){
-			
-		}
+		
 		yield put(NotifAction.setSucsses(response));
 	} catch (error) {
 		console.log(error);

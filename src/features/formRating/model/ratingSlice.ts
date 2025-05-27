@@ -18,10 +18,15 @@ const ratingSlice = createSlice({
 const submitRating = createAction(
     `${ratingSlice.name}/submitRating`
 );
+const submitRatingid = createAction(
+    `${ratingSlice.name}/submitRatingid`,
+    (data: string) => ({payload : data})
+);
 
 export const RatingActions = {
     ...ratingSlice.actions,
     submitRating,
+    submitRatingid
 }
 
 

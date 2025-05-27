@@ -22,6 +22,7 @@ function* handleSubmitForm(action: PayloadAction<form>): Generator {
 				yield put(HelperActions.setErrorNetwork('Неверный пароль'));
 			}
 		}
+		yield put(LoginActions.reset())
 	}
 }
 

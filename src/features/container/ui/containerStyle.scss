@@ -9,9 +9,8 @@
 .container {
 	display: grid;
 	align-items: center;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: rem(300) rem(300) rem(300) rem(300);
 	gap: rem(20);
-	width: 80%;
 	cursor: pointer;
 
 	&_item {

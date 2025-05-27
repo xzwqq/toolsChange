@@ -1,5 +1,4 @@
-import './LoadingText.scss'; // Подключаем стили
-
+import './LoadingText.scss';
 
 export const LoadingText = () => {
 	return (

@@ -10,7 +10,7 @@ import {
 import { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../app/store/store';
 import { Tool } from '../type/toolsend.type';
-import { history } from '../../../app/providers/history';
+import { navigateTo } from '../../../utils/helper/navigationService';
 
 function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
 	yield put(ToolsSendActions.setIsloading())
@@ -23,7 +23,7 @@ function* toolsSendSaga(action: PayloadAction<{ tool: Tool }>): Generator {
 		}
 		const response: any = yield call(sendTools, data);
 		yield put(ToolsSendActions.setSuccess(response));
-    	yield call([history, history.push], '/my')
+		yield call(navigateTo, "/")
 		yield put(HelperActions.setSucsses('Вы успешно выложили обьявление!'))
 	} catch (error) {
 		console.log(error)

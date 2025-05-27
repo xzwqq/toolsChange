@@ -3,10 +3,9 @@ import { RootState } from '../../../app/store/store.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { NotifAction } from '../model/notifSlice';
 import { notifresponse } from '../type/notif.type.ts';
-
-import { history } from '../../../app/providers/history.ts';
 import './notifstyle.scss';
 import { LoadingText } from '../../../widgets/spinner/DotSpinner.tsx';
+import { useNavigate } from 'react-router';
 
 const statusNotif = ( status: string) => {
     if(status === 'PENDING'){
@@ -48,6 +47,7 @@ export const Notificationout: React.FC = () => {
   const container = useSelector((state: RootState) => state.notif.response);
   const status = useSelector((state: RootState) => state.notif.status);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -76,7 +76,7 @@ if(status){
               <div key={id} className='block-notif'>
                 <div className="all-iongo">
                   <div className='info-notif'>
-                    <button className='border-nah' onClick={() => history.push(`/advert/${item?.tool.id}`)}><img src={item?.tool.photos[0]} alt='photo notif' className='info-img'/></button>
+                    <button className='border-nah' onClick={() => navigate(`/advert/${item?.tool.id}`)}><img src={item?.tool.photos[0]} alt='photo notif' className='info-img'/></button>
                     <div className='info-init-tool'>
                       <div className='info-tool'>
                         <p className='info-p-tool'>{item?.tool.category.name},</p>

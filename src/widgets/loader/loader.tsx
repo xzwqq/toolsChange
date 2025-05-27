@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import "./loader.scss"; // Подключаем стили
+import "./loader.scss"; 
 
 interface LoadingButtonProps {
   isLoading: boolean;
@@ -7,7 +7,7 @@ interface LoadingButtonProps {
   loadingText?: string;
   className?: string;
   style?: CSSProperties;
-  [key: string]: any; // Для остальных пропсов кнопки
+  [key: string]: any; 
 }
 
 export const LoadingButton = ({

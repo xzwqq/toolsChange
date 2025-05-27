@@ -14,7 +14,6 @@ const FormSendTrade: React.FC<FormSendTradeProps> = ({type , id}: {type: string;
 		message: ''
 	})
    const handleChange = (name: string, value: string) => {
-		console.log(buy)
 		setBuy(prev => ({
 			...prev,
 			[name]: value

@@ -8,7 +8,7 @@ interface editState {
 
 const initialState: editState ={
     container: null,
-    isloading: false
+    isloading: false,
 }
 
 const editSlice = createSlice({

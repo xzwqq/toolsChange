@@ -1,5 +1,4 @@
 import axios from "axios";
-import { history } from "../../app/providers/history";
 import { HelperActions } from "../../utils/helper/helperSlice";
 import store from '../../app/store/store'
 

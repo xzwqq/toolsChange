@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from '../../../features/container/index.ts';
 import { RootState } from '../../../app/store/store.ts';
-import { history } from '../../../app/providers/history.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import iconProfile from '../../../shared/svgImage/MyProfile.svg'
 import './myprofile.scss';
 import { FormRating } from '../../../features/formRating/index.ts';
+import { useNavigate } from 'react-router';
 
 interface content {
 	owner: {
@@ -16,6 +16,7 @@ interface content {
 }
 const MyProfile: React.FC = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const [status, setStatus] =useState(true)
 	const zalupa = 'my';
 	const container: content = useSelector(
@@ -25,7 +26,7 @@ const MyProfile: React.FC = () => {
 	const removetoken = () => {
 		localStorage.clear();
 		dispatch(HelperActions.setSucsses('Вы успешно вышли!'));
-		history.push('/login');
+		navigate('/')
 	};
 	return (
 		<>

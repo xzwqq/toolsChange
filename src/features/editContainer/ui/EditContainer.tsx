@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { EditActions } from "../model/editSlice.js";
 import { ToolsSendActions } from '../../formToolsSend/model/toolsSendSlice.ts';
 import { RootState } from "../../../app/store/store.ts";
@@ -97,7 +97,7 @@ const EditContainer = () => {
       });
       setPfotocont(container?.photos)
     }
-  }, [container]);
+  }, [container?.id]);
 
   return (
     <div className='root-formsend'>
@@ -179,7 +179,6 @@ const EditContainer = () => {
               <div className="preview-image">
                 {files.map((file, index) => { 
                   const result = URL.createObjectURL(file);
-                  console.log(file)
                   return (
                     <img key={index} className='prev_img orig' src={result} alt="preview" />
                   );

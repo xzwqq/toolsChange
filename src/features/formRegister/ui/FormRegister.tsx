@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { RegisterActions } from '../model/registerSlice.ts';
-import { history } from '../../../app/providers/history.js';
 import { register } from '../type/registerType.ts';
 import jam from '../../../shared/svgImage/jam_google.svg'
 import { LoadingButton } from '../../../widgets/loader/loader.tsx';

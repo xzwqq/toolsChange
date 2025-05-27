@@ -4,13 +4,11 @@ import { RegisterActions } from './registerSlice.ts';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import { register } from '../type/registerType.ts';
-import { history } from '../../../app/providers/history.ts';
 
 function* handleSubmitForm(action: PayloadAction<register>): Generator {
 	try {
 		yield call(submitRegister, action.payload);
 		yield put(RegisterActions.reset())
-		yield call([history, history.push], '/')
 		yield put(HelperActions.setSucsses('Вы успешно вошли!'))
 	} catch (error) {
 		if (typeof error === "object" && error !== null && "status" in error) {
@@ -19,6 +17,7 @@ function* handleSubmitForm(action: PayloadAction<register>): Generator {
 				yield put(HelperActions.setErrorNetwork('пользователь с такой почтой уже существует'));
 			}
 		}
+		yield put(RegisterActions.reset())
 	}
 }	
 

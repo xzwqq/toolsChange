@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store/store';
 import { AdvertActions } from '../model/advertSlice';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import Spinner from '../../../widgets/spinner/Spinner';
@@ -34,13 +34,13 @@ export const type = (cont: string) => {
 
 const FormAdvert: React.FC = () => {
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const container = useSelector((state: RootState) => state.advert.container);
 	const rating = useSelector((state: RootState) => state.advert.average);
 	const isVisible = useSelector((state: RootState) => state.advert.visible);
 
 	const ratingstars = (idstar: number, rating: number) => {
-		console.log(rating)
     if(idstar <= rating){
       return star
     }else{
@@ -122,7 +122,7 @@ const FormAdvert: React.FC = () => {
 							<p className='advert_owner'>{container.owner.firstname}</p>
 						</div>
 						<div className="star-advert">
-							<p className='advert_owner'>Средний рейтинг: {rating ? rating.toString().substring(0,1) : 0}</p>
+							<p className='advert_owner'>Средний рейтинг: {rating ? rating.toString().substring(0,3) : 0}</p>
 							<div className="star-advet-svg">
 								<img className='starsvg' src={ratingstars(1, rating)} alt="" />
 								<img className='starsvg' src={ratingstars(2, rating)} alt="" />
@@ -130,6 +130,7 @@ const FormAdvert: React.FC = () => {
 								<img className='starsvg' src={ratingstars(4, rating)} alt="" />
 								<img className='starsvg' src={ratingstars(5, rating)} alt="" />
 							</div>
+							<h4 className='p_rating rating_opert' onClick={() => navigate(`/rating/${container.owner.id}`)}>Посмотреть все отзывы</h4>
 						</div>
 					</div>
 				</div>

@@ -7,7 +7,7 @@ import {
 } from '../../../shared/api/editAPI.ts';
 import { HelperActions } from '../../../utils/helper/helperSlice.ts';
 import { PidorokFinish, PidorokSend } from '../type/editType.ts';
-import { history } from '../../../app/providers/history.ts';
+import { navigateTo } from '../../../utils/helper/navigationService.ts';
 
 function makeCall(datas: PidorokSend){
 	const data = new FormData();
@@ -29,8 +29,8 @@ function* sendEditContainer(action: PayloadAction<PidorokSend>): Generator {
 	const data: FormData | PidorokFinish = makeCall(datas)
 	try {
 		yield call(putEditContainer, data, id);
-		yield call([history, history.push], '/my')
 		yield put(HelperActions.setSucsses('Вы успешно изменили обьявление!'));
+		yield call(navigateTo, "/my")
 	} catch (error) {
 		console.log(error)
 	}

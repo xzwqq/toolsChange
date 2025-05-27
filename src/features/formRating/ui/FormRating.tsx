@@ -7,9 +7,11 @@ import star from '../../../shared/svgImage/fullStar.svg'
 import anstar from '../../../shared/svgImage/anlessStar.svg'
 import './rating.style.scss'
 import { LoadingText } from '../../../widgets/spinner/DotSpinner';
+import { useParams } from 'react-router';
 
 const FormRating: React.FC = () => {
 	const dispatch = useDispatch();
+  const {id} = useParams();
   const container: Array<ratingsucsses> = useSelector((state: RootState) => state.rating.succses);
   const status: boolean = useSelector((state: RootState) => state.rating.status);
 
@@ -22,6 +24,9 @@ const FormRating: React.FC = () => {
   } 
 
 	useEffect(() => {
+    if(id){
+      dispatch(RatingActions.submitRatingid(id));
+    }
 		dispatch(RatingActions.submitRating());
 	},[]);
 

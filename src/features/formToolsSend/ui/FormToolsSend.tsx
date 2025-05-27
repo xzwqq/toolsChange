@@ -4,8 +4,8 @@ import { ToolsSendActions } from '../model/toolsSendSlice';
 import { RootState } from '../../../app/store/store';
 import { Tool } from '../type/toolsend.type';
 import dwnldimage from '../../../shared/svgImage/dwnldImage.svg';
-import './fornsend.scss';
 import { LoadingButton } from '../../../widgets/loader/loader';
+import './fornsend.scss';
 
 const FormToolsSend: React.FC = () => {
 	const dispatch = useDispatch();
@@ -57,7 +57,6 @@ const FormToolsSend: React.FC = () => {
 	) => {
 		const { name, value } = e.target;
 		setFormData(prev => ({ ...prev, [name]: value }));
-		console.log(formData);
 	};
 
 	useEffect(() => {
@@ -65,7 +64,7 @@ const FormToolsSend: React.FC = () => {
 			dispatch(ToolsSendActions.submitSelectM());
 			dispatch(ToolsSendActions.submitSelectC());
 		}
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<div className='root-formsend'>
