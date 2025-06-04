@@ -66,7 +66,7 @@
 	border-radius: rem(7);
 	background: #ffbf00;
 	border: none;
-	width: auto;
+	height: 2.5rem;
 	color: #fff;
 	font-family: 'Unbounded';
 	padding: rem(12);
@@ -75,7 +75,7 @@
 
 .after-form {
 	width: rem(520);
-	height: rem(269);
+	height: rem(273);
 	background: #ffbf00;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
@@ -117,7 +117,7 @@
 .gmail-input::placeholder {
 	padding-left: rem(10);
 }
-.form-login_root{
+.form-login_root {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;

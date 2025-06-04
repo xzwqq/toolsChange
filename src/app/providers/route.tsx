@@ -7,6 +7,7 @@ const Edit = React.lazy(() => import('../../pages/Edit/index.ts'));
 const Rating = React.lazy(() => import('../../pages/Rating/index.ts'));
 const Advert = React.lazy(() => import('../../pages/Advert/index.ts'));
 const Error = React.lazy(() => import('../../pages/Error/index.ts'));
+const Chat = React.lazy(() => import('../../pages/Chat/index.ts'));
 const Notification = React.lazy(
 	() => import('../../pages/Notification/index.ts')
 );
@@ -39,6 +40,14 @@ export const routes: RoutesConfig = {
 	rating: {
 		path: '/rating/:id',
 		element: <Rating />
+	},
+	chat: {
+		path: '/chat',
+		element: <Chat />
+	},
+	chats: {
+		path: '/chat/:id',
+		element: <Chat />
 	},
 	error: {
 		path: '*',

@@ -11,6 +11,7 @@ import { headerSlice } from '../../widgets/Header/index.ts';
 import { ratingSlice } from '../../features/formRating/index.ts';
 import { advertSlice } from '../../features/FormAdvert/index.ts';
 import { notifSlice } from '../../features/notificationForm/index.ts';
+import { chatSlice } from '../../features/formChat/index.ts';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,7 +26,8 @@ const store = configureStore({
         edit: editSlice,
         rating: ratingSlice, 
         advert: advertSlice,
-        notif: notifSlice
+        notif: notifSlice,
+        chat: chatSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {

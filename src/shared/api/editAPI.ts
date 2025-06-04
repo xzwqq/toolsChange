@@ -27,3 +27,7 @@ export const postBuyTools = async (data: StateBuy) => {
 export const postRent = async (data: StateBuy) => {
     await rootAxios.post(`/deals/rental`, data)
 }
+export const createChatApi = async (data: string) => {
+    const respone = await rootAxios.post(`/chats/${data}`)
+    return respone.data
+}

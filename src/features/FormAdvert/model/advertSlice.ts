@@ -32,6 +32,10 @@ const submitAdvert = createAction(
     `${advertSlice.name}/submitAdvert`,
     (data) => ({ payload: data })
 );
+const createChatAction = createAction(
+    `${advertSlice.name}/createChatAction`,
+    (data) => ({ payload: data })
+);
 const postBuyTool = createAction(
     `${advertSlice.name}/postBuyTool`,
     (data) => ({ payload: data })
@@ -45,7 +49,8 @@ export const AdvertActions = {
     ...advertSlice.actions,
     submitAdvert,
     postBuyTool,
-    postRentTool
+    postRentTool,
+    createChatAction
 }
 
 export default advertSlice.reducer

@@ -56,7 +56,10 @@ const FormAdvert: React.FC = () => {
 	const whois = () => {
 		if(container?.owner.loginOwner !== container?.owner.loginRequester){
 			return(
-				<button onClick={() => dispatch(AdvertActions.setVisible(!isVisible))} className={`advert_button ${isVisible ? 'grey-advert' : ''}`}>{isVisible ? "Свернуть" :"Откликнуться"}</button>
+				<>
+					<button onClick={() => dispatch(AdvertActions.setVisible(!isVisible))} className={`advert_button ${isVisible ? 'grey-advert' : ''}`}>{isVisible ? "Свернуть" :"Откликнуться"}</button>
+					<button onClick={() => dispatch(AdvertActions.createChatAction(container?.owner.id))} className={`advert_button yoyoyo`}>Перейти в чат</button>
+				</>
 			)
 		}
 	}
@@ -130,7 +133,7 @@ const FormAdvert: React.FC = () => {
 								<img className='starsvg' src={ratingstars(4, rating)} alt="" />
 								<img className='starsvg' src={ratingstars(5, rating)} alt="" />
 							</div>
-							<h4 className='p_rating rating_opert' onClick={() => navigate(`/rating/${container.owner.id}`)}>Посмотреть все отзывы</h4>
+							<p className='rating_opert' onClick={() => navigate(`/rating/${container.owner.id}`)}>Посмотреть все отзывы</p>
 						</div>
 					</div>
 				</div>

@@ -3,7 +3,7 @@ import "./loader.scss";
 
 interface LoadingButtonProps {
   isLoading: boolean;
-  defaultText: string;
+  defaultText: string | any;
   loadingText?: string;
   className?: string;
   style?: CSSProperties;

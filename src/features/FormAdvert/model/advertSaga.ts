@@ -1,10 +1,11 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { getAverageRating, getEditContainer, postBuyTools, postRent } from "../../../shared/api/editAPI";
+import { createChatApi, getAverageRating, getEditContainer, postBuyTools, postRent } from "../../../shared/api/editAPI";
 import { AdvertActions } from "./advertSlice";
 import {call , put, takeLatest } from 'redux-saga/effects'
 import { Pidorok } from "../../editContainer/type/editType";
 import { HelperActions } from "../../../utils/helper/helperSlice";
 import { StateBuy } from "../type/form.advert.type";
+import { navigateTo } from "../../../utils/helper/navigationService";
 
 
 function* getAdvert(action: PayloadAction<string>): Generator{
@@ -41,10 +42,19 @@ function* postRentTools(action: PayloadAction<StateBuy> ): Generator{
         console.log(error)
     }
 }
+function* createChatsaga(action: PayloadAction<string> ): Generator{
+    try{
+        const response = yield call(createChatApi, action.payload)
+        yield call(navigateTo, `/chat/${response}`)
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 export default function* watchAdvert(){
     yield takeLatest(AdvertActions.submitAdvert, getAdvert)
     yield takeLatest(AdvertActions.postBuyTool, postBuy)
     yield takeLatest(AdvertActions.postRentTool, postRentTools)
+    yield takeLatest(AdvertActions.createChatAction, createChatsaga)
 }

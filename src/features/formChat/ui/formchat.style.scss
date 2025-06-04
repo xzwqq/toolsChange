@@ -1,0 +1,140 @@
+@use '../../../shared/styles/helpers/function.scss' as *;
+
+.root_chat {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2%;
+}
+.info_chat {
+	width: rem(760);
+	flex-direction: column;
+}
+.chat_main {
+	height: rem(700);
+	width: rem(860);
+  display: flex;
+  flex-direction: row;
+	&_h {
+		font-family: 'Unbounded';
+		align-self: start;
+	}
+}
+.icon_chat{
+  margin-left: rem(10);
+}
+.info_pspsp {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	width: rem(240);
+  height: rem(70);
+	gap: rem(20);
+	border-radius: rem(15);
+	border: 2px solid #ffbf00;
+}
+.info_queue{
+  display: flex;
+  flex-direction: column;
+}
+.chatiks_main{
+  margin-left: rem(10);
+  display: flex;
+  flex-direction: column;
+  border-radius: rem(15);
+  width: rem(610);
+  border: 2px solid #ffbf00;
+}
+.info_chatiks{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-left: rem(20);
+  gap: rem(10);
+  height: rem(87);
+}
+.line_chatik{
+  width: rem(608);
+  background-color: #ffbf00;
+  height: 2px;
+}
+.message_main{
+  height: rem(520);
+  overflow-y: auto;
+}
+.postmessagepta{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(51, 51, 51, 1);
+  border: none;
+  border-bottom-left-radius: rem(10);
+  border-bottom-right-radius: rem(10);
+}
+.input_chatiks{
+  margin-left: rem(10);
+  width: rem(500);
+  border: none;
+  background: transparent;
+  color: whitesmoke;
+}
+.but_chatik{
+  border: none;
+  background: transparent;
+  color: whitesmoke;
+}
+.message-divchik{
+  margin-left: rem(10);
+  display: flex;
+  flex-direction: column;
+}
+.message-divchik-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: rem(40);
+  margin-top: rem(-15);
+}
+.norm_fotka{
+  width: rem(30);
+  height: rem(30);
+}
+.messageeptanelez{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: rem(10);
+}
+.dimka-but{
+  border: none;
+  background-color: transparent;
+  font-family: 'Unbounded';
+  font-size: rem(20);
+}
+.yaebal{
+  background-color: #ffbf00 !important;
+  color: whitesmoke !important;
+}
+.vnizblyat{
+  width: rem(30);
+  height: rem(30);
+  background-color: black;
+  border-radius: rem(50);
+  align-self: flex-end;
+  color: whitesmoke;
+  text-align: center;
+}
+.nesosal{
+  font-size: rem(12);
+}
+.taknado{
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+}
+.netuchatov{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}

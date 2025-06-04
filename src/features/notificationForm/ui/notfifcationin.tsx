@@ -12,10 +12,10 @@ import { useNavigate } from 'react-router';
 
 
 export const Notificationin: React.FC = () => {
+  const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const container = useSelector((state: RootState) => state.notif.response);
 	const status = useSelector((state: RootState) => state.notif.status);
-	const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const answernotif = (id: string, type: string) => {
     const data = {
